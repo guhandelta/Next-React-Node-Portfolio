@@ -1,10 +1,13 @@
 import { Header } from '../components/shared'
 import { BaseLayout } from '../components/layouts'
+import { Button, Container } from 'reactstrap'
 
 const Index = () => {
   return (
     <BaseLayout>
-      <h1>App Works!!!!</h1>
+      <Container>
+        <Button color="primary">Wasssup!!</Button>
+      </Container>
     </BaseLayout>
   )
 }
