@@ -1,11 +1,11 @@
-import { Header } from '../components'
+import { Header } from '../components/shared'
+import { BaseLayout } from '../components/layouts'
 
 const Index = () => {
   return (
-    <div>
-      <Header />
+    <BaseLayout>
       <h1>App Works!!!!</h1>
-    </div>
+    </BaseLayout>
   )
 }
 
