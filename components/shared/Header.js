@@ -9,27 +9,27 @@ class Header extends Component {
                     <a>
                         Home
                     </a>
-                </Link>
+                </Link>&emsp;
                 <Link href="/about">
                     <a>
                         About
                     </a>
-                </Link>
-                <Link href="/portfolio">
+                </Link>&emsp;
+                <Link href="/portfolios">
                     <a>
                         Portfolios
                     </a>
-                </Link>
+                </Link>&emsp;
                 <Link href="/blogs">
                     <a>
                         Blogs
                     </a>
-                </Link>
+                </Link>&emsp;
                 <Link href="/cv">
                     <a>
                         Cv
                     </a>
-                </Link>
+                </Link>&emsp;
             </React.Fragment>
         );
     }
