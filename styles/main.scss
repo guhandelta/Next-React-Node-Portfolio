@@ -1,34 +1,8 @@
-@font-face{
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Bold.ttf');
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Italic.ttf');
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Light.ttf');
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Regular.ttf');
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'Caveat';
-    src: url('/fonts/Caveat-Bold.ttf');
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'Caveat';
-    src: url('/fonts/Caveat-Regular.ttf');
-    font-weight: normal;
-}
+@import './shared/fonts';
+@import './index';
 
 html,body{
-    font-family:'Montserrat', 'Caveat';
+    height: 100%;
+    width: 100%;
+    font-family:'Montserrat', 'Caveat' !important;
 }
