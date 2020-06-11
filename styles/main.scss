@@ -1,6 +1,8 @@
 @import './shared/fonts';
 @import './index';
 
+@import './components/header';
+
 html,body{
     height: 100%;
     width: 100%;
@@ -18,3 +20,6 @@ html,body{
     font-weight: 700;
 }
 
+.absolute{
+    position: absolute;
+}

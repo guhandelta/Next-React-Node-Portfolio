@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react'
 import Link from 'next/link'
 import {
     Collapse,
@@ -13,7 +13,7 @@ const BSNavLink = props => {
     const { title, href } = props;
     return (
         <Link href={href}>
-            <a className="nav-link">
+            <a className="nav-link port-navbar-link">
                 {title}
             </a>
         </Link>
@@ -21,43 +21,41 @@ const BSNavLink = props => {
 }
 
 
-export default class Header extends Component {
-    state = { isOpen: false }
-    toggle = () => this.setState({ isOpen: !this.state.isOpen })
-    render() {
-        return (
-            <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand>
-                        <Link href="/">
-                            <a className='nav-link name'>
-                                Guhaprasaanth
-                            </a>
-                        </Link>
-                    </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.isOpen} navbar>
-                        <Nav className="mr-auto" navbar>
-                            <NavItem>
-                                <BSNavLink title="Home" href="/" />
-                            </NavItem>&emsp;&nbsp;
-                            <NavItem>
-                                <BSNavLink title="About" href="/about" />
-                            </NavItem>&emsp;&nbsp;
-                            <NavItem>
-                                <BSNavLink title="Portfolios" href="/portfolios" />
-                            </NavItem>&emsp;&nbsp;
-                            <NavItem>
-                                <BSNavLink title="Blogs" href="/blogs" />
-                            </NavItem>&emsp;&nbsp;
-                            <NavItem>
-                                <BSNavLink title="CV" href="/cv" />
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
-        )
-    }
+const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
+    return (
+        <div>
+            <Navbar
+                className="port-navbar port-default absolute"
+                color="transparent"
+                dark
+                expand="md">
+                <NavbarBrand className="port-navbar-brand" href="/">Guhaprasaanth</NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink title="Home" href="/" />
+                        </NavItem>&emsp;&nbsp;
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink title="About" href="/about" />
+                        </NavItem>&emsp;&nbsp;
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink title="Portfolios" href="/portfolios" />
+                        </NavItem>&emsp;&nbsp;
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink title="Blogs" href="/blogs" />
+                        </NavItem>&emsp;&nbsp;
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink title="CV" href="/cv" />
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        </div >
+    )
+
 }
 
+export default Header;
