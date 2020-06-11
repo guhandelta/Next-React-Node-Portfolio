@@ -1,5 +1,5 @@
-import '../styles/main.scss'
 import '../styles/bootstrap.min.css';
+import '../styles/main.scss'
 
 class App extends React.Component {
 
