@@ -1,18 +1,17 @@
-import { useEffect } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
 
 
-const Portfolios = ({ posts }) => {
-
+const Portfolios = () => { //Assigning empty array as def value for posts, so it won't complain abt not having any posts
+    const [posts, setPosts] = useState([]);
     useEffect(() => {
         // Cannot defn useEffet as async, but can write async fn() inside useEffect()
         async function getPosts() {
             const res = await fetch('/api/v1/posts');
             const data = await res.json();
-            debugger;
+            setPosts(data);
         }
 
         getPosts();
@@ -43,15 +42,4 @@ const Portfolios = ({ posts }) => {
     )
 }
 
-Portfolios.getInitialProps = async () => {
-    let posts = [];
-
-    try {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        posts = res.data;
-    } catch (err) {
-        console.error(err);
-    }
-    return { posts: posts.slice(0, 10) };
-}
 export default Portfolios;
