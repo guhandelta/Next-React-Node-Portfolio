@@ -19,6 +19,11 @@ const BSNavLink = props => {
         </Link>
     );
 }
+const BsNavBrand = () => (
+    <Link href="/">
+        <a className="nav-link port-navbar-link "> Guhaprasaanth </a>
+    </Link>
+);
 
 
 const Header = () => {
@@ -31,7 +36,8 @@ const Header = () => {
                 color="transparent"
                 dark
                 expand="md">
-                <NavbarBrand className="port-navbar-brand" href="/">Guhaprasaanth</NavbarBrand>
+                {/* <NavbarBrand className="port-navbar-brand my-name" href="/">Guhaprasaanth</NavbarBrand> */}
+                <BsNavBrand />
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

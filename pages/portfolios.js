@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 // import Link from 'next/link'
 import { BaseLayout } from '../components/layouts'
+import { BasePage } from '../components/'
 import { Link } from '../routes'
 
 
@@ -16,30 +17,31 @@ class Portfolios extends Component {
         } catch (err) {
             console.error(err);
         }
-        return { portfolio: posts.slice(0, 10) };
+        return { posts: posts.slice(0, 10) };
+    }
+
+    renderPosts(posts) {
+        return posts.map(post =>
+            <li key={post.id}>
+                <Link route={`portfolios/${post.id}`}>
+                    <a>
+                        {post.title}
+                    </a>
+                </Link>
+            </li>
+        )
     }
 
     render() {
-        const { portfolio } = this.props;
+        const { posts } = this.props;
         return (
             <BaseLayout>
-                <h1>Portfolios Page</h1>
-                <ul>
-                    {
-                        portfolio.map(post => {
-                            return (
-                                <li key={post.id}>
-                                    <Link route={`portfolios/${post.id}`}>
-                                        <a>
-                                            {post.title}
-                                        </a>
-                                    </Link>
-                                </li>
-                            )
-                        }
-                        )
-                    }
-                </ul>
+                <BasePage>
+                    <h1>Portfolios Page</h1>
+                    <ul>
+                        {this.renderPosts(posts)}
+                    </ul>
+                </BasePage>
             </BaseLayout>
         )
     }

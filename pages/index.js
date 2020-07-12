@@ -1,8 +1,8 @@
-import { BaseLayout } from '../components/layouts/';
-import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed'
+import { Container, Row, Col } from 'reactstrap';
+import { BaseLayout } from '../components/layouts/';
 
-const ROLES = ['Full Stack Developer', 'ReactJS', 'Flask', 'Blockchian Enthusiast', 'Nature Enthusiast', 'Team Player', 'NodeJS', 'Django'];
+const ROLES = ['Full Stack Developer', 'ReactJS', 'Flask', 'Blockchain Enthusiast', 'Nature Enthusiast', 'Team Player', 'NodeJS', 'Django'];
 class Index extends React.Component {
   render() {
     return (
