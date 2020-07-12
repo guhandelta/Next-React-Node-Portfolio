@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { BaseLayout } from '../../components/layouts'
-import { BasePage } from '../../components/'
+import { BaseLayout } from '@/components/layouts'
+import { BasePage } from '@/components/'
 
 
 const Portfolio = ({ portfolio }) => {

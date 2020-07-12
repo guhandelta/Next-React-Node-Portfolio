@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { BaseLayout } from '../components/layouts'
-import { BasePage } from '../components/'
+import { BaseLayout } from '@/components/layouts'
+import { BasePage } from '@/components/'
 
 const Blog = () => {
     return (

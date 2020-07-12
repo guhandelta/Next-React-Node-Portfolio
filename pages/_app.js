@@ -1,5 +1,5 @@
-import '../styles/bootstrap.min.css';
-import '../styles/main.scss'
+import '@/styles/bootstrap.min.css';
+import '@/styles/main.scss'
 
 const App = ({ Component, pageProps }) => <Component {...pageProps} />
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Link from 'next/link'
-import { BaseLayout } from '../../components/layouts'
-import { BasePage } from '../../components/'
+import { BaseLayout } from '@/components/layouts'
+import { BasePage } from '@/components/'
 
 
 const Portfolios = ({ posts }) => {
