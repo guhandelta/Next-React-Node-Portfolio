@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 import { BaseLayout } from '@/components/layouts'
@@ -5,6 +6,18 @@ import { BasePage } from '@/components/'
 
 
 const Portfolios = ({ posts }) => {
+
+    useEffect(() => {
+        // Cannot defn useEffet as async, but can write async fn() inside useEffect()
+        async function getPosts() {
+            const res = await fetch('/api/v1/posts');
+            const data = await res.json();
+            debugger;
+        }
+
+        getPosts();
+
+    }, []); // empty [] => the fn() is called only once
 
     const renderPosts = (posts) => {
         return posts.map(post =>
