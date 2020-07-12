@@ -1,32 +1,31 @@
-import React, { Component } from 'react'
 import axios from 'axios'
 import { BaseLayout } from '../../components/layouts'
+import { BasePage } from '../../components/'
 
-import { withRouter } from 'next/router'
 
-class Portfolio extends Component {
+const Portfolio = ({ portfolio }) => {
 
-    static async getInitialProps({ query }) {
-        let post = [];
-
-        try {
-            const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${query.id}`);
-            post = res.data;
-        } catch (err) {
-            console.error(err);
-        }
-        return { portfolio: post };
-    }
-
-    render() {
-        const { portfolio } = this.props;
-        return (
-            <BaseLayout>
-                <h2>{portfolio.title}</h2>
-                <p>{portfolio.body}</p>
-            </BaseLayout>
-        )
-    }
+    return (
+        <BaseLayout>
+            <BasePage>
+                <h1>Portfolio Page</h1>
+                <h2>Title:&emsp;{portfolio.title}</h2>
+                <p>Body:&emsp;{portfolio.body}</p>
+                <p>ID:&emsp;{portfolio.id}</p>
+            </BasePage>
+        </BaseLayout>
+    )
 }
 
-export default withRouter(Portfolio);
+Portfolio.getInitialProps = async ({ query }) => {
+    let post = {};
+    try {
+        const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${query.id}`);
+        post = res.data;
+    } catch (err) {
+        console.error(err);
+    }
+    return { portfolio: post };
+}
+
+export default Portfolio;

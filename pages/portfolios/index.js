@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { BaseLayout } from '../components/layouts'
-import { BasePage } from '../components/'
-import { Link } from '../routes'
+import Link from 'next/link'
+import { BaseLayout } from '../../components/layouts'
+import { BasePage } from '../../components/'
 
 
 const Portfolios = ({ posts }) => {
@@ -9,7 +9,7 @@ const Portfolios = ({ posts }) => {
     const renderPosts = (posts) => {
         return posts.map(post =>
             <li key={post.id} style={{ 'fontSize': '20px' }}>
-                <Link route={`/portfolios/${post.id}`}>
+                <Link as={`/portfolios/${post.id}`} href="/portfolios/[id]">
                     <a>
                         {post.title}
                     </a>
