@@ -4,7 +4,6 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem
 } from 'reactstrap';
@@ -25,6 +24,8 @@ const BsNavBrand = () => (
     </Link>
 );
 
+const LoginLink = () => <span className="nav-link port-navbar-link clickable">Login</span>
+const LogoutLink = () => <span className="nav-link port-navbar-link clickable">Logout</span>
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -55,6 +56,14 @@ const Header = () => {
                         </NavItem>&emsp;&nbsp;
                         <NavItem className="port-navbar-item">
                             <BSNavLink title="CV" href="/cv" />
+                        </NavItem>
+                    </Nav>
+                    <Nav navbar>
+                        <NavItem className="port-navbar-item">
+                            <LoginLink />
+                        </NavItem>
+                        <NavItem className="port-navbar-item">
+                            <LogoutLink />
                         </NavItem>
                     </Nav>
                 </Collapse>
