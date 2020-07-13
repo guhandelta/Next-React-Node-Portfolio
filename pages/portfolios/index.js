@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
-import { useGetPosts } from '@/actions'
+import { useGetData } from '@/actions'
 
 
 
 const Portfolios = () => {
 
-    const { posts, error, loading } = useGetPosts();
+    const { data, error, loading } = useGetData('/api/v1/posts');
     debugger;
     // onPageLoad => useGetPosts() returns an [] on the 1st call and after page is rendered, useEffect gets triggered and -
     //- sets the fetched data to the state, which will rerender the component => displaying the fetched data thru Portfolios()
@@ -30,9 +30,9 @@ const Portfolios = () => {
                 {loading &&
                     <h5>Loading Data.....</h5>
                 }
-                {posts &&
+                {data &&
                     <ul>
-                        {renderPosts(posts)}
+                        {renderPosts(data)}
                     </ul>
                 }
                 {error &&

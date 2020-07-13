@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react'
 
-export const useGetPosts = () => {
-    const [posts, setPosts] = useState([]);
+export const useGetData = (url) => {
+    const [data, setData] = useState();
     const [error, setError] = useState(); // Error is set to be undefined by default, by not providing any initial value
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // Cannot defn useEffet as async, but can write async fn() inside useEffect()
-        async function getPosts() {
-            const res = await fetch('/api/v1/posts');
+        async function fetchData() {
+            const res = await fetch(url);
             const result = await res.json();
 
             if (res.status !== 200) {
                 setError(result);
             } else {
-                setPosts(result);
+                setData(result);
             }
             setLoading(false); //Settign Loading to false as the data feth is complete
         }
 
-        getPosts();
+        url && fetchData(); //Fetch data only if the URL is available
 
-    }, []); // empty [] => useEffect() is called only once
+    }, [url]); // Fetch data whenever url changes
 
-    return { posts, error, loading };
+    return { data, error, loading };
 }
