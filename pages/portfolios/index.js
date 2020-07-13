@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
+import { useGetPosts } from '@/actions'
 
 
-const Portfolios = () => { //Assigning empty array as def value for posts, so it won't complain abt not having any posts
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-        // Cannot defn useEffet as async, but can write async fn() inside useEffect()
-        async function getPosts() {
-            const res = await fetch('/api/v1/posts');
-            const data = await res.json();
-            setPosts(data);
-        }
 
-        getPosts();
+const Portfolios = () => {
 
-    }, []); // empty [] => the fn() is called only once
-
+    const { posts, error } = useGetPosts();
+    // onPageLoad => useGetPosts() returns an [] on the 1st call and after page is rendered, useEffect gets triggered and -
+    //- sets the fetched data to the state, which will rerender the component => displaying the fetched data thru Portfolios()
     const renderPosts = (posts) => {
         return posts.map(post =>
             <li key={post.id} style={{ 'fontSize': '20px' }}>
@@ -34,9 +26,16 @@ const Portfolios = () => { //Assigning empty array as def value for posts, so it
         <BaseLayout>
             <BasePage>
                 <h1>Portfolios Page</h1>
-                <ul>
-                    {renderPosts(posts)}
-                </ul>
+                {posts &&
+                    <ul>
+                        {renderPosts(posts)}
+                    </ul>
+                }
+                {error &&
+                    <div className="alert alert-danger">
+                        {error.message}
+                    </div>
+                }
             </BasePage>
         </BaseLayout>
     )
