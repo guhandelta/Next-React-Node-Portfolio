@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 export const useGetPosts = () => {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(); // Error is set to be undefined by default, by not providing any initial value
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // Cannot defn useEffet as async, but can write async fn() inside useEffect()
@@ -15,11 +16,12 @@ export const useGetPosts = () => {
             } else {
                 setPosts(result);
             }
+            setLoading(false); //Settign Loading to false as the data feth is complete
         }
 
         getPosts();
 
     }, []); // empty [] => useEffect() is called only once
 
-    return { posts, error };
+    return { posts, error, loading };
 }

@@ -7,7 +7,8 @@ import { useGetPosts } from '@/actions'
 
 const Portfolios = () => {
 
-    const { posts, error } = useGetPosts();
+    const { posts, error, loading } = useGetPosts();
+    debugger;
     // onPageLoad => useGetPosts() returns an [] on the 1st call and after page is rendered, useEffect gets triggered and -
     //- sets the fetched data to the state, which will rerender the component => displaying the fetched data thru Portfolios()
     const renderPosts = (posts) => {
@@ -26,6 +27,9 @@ const Portfolios = () => {
         <BaseLayout>
             <BasePage>
                 <h1>Portfolios Page</h1>
+                {loading &&
+                    <h5>Loading Data.....</h5>
+                }
                 {posts &&
                     <ul>
                         {renderPosts(posts)}
