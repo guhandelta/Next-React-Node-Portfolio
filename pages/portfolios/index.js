@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
-import { useGetData } from '@/actions'
-
-
+import { useGetPosts } from '@/actions'
 
 const Portfolios = () => {
 
-    const { data, error, loading } = useGetData('/api/v1/posts');
+    const { data, error, loading } = useGetPosts();
+    // useSWR will execute the given fn() to fetch the data and assign the fetch result to teh data prop, depending on the result
     debugger;
     // onPageLoad => useGetPosts() returns an [] on the 1st call and after page is rendered, useEffect gets triggered and -
     //- sets the fetched data to the state, which will rerender the component => displaying the fetched data thru Portfolios()

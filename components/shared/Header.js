@@ -20,7 +20,7 @@ const BSNavLink = props => {
 }
 const BsNavBrand = () => (
     <Link href="/">
-        <a className="nav-link port-navbar-link "> Guhaprasaanth </a>
+        <a className="nav-link port-navbar-link my-name"> Guhaprasaanth </a>
     </Link>
 );
 

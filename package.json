@@ -19,6 +19,7 @@
     "react-typed": "^1.2.0",
     "reactstrap": "^8.4.1",
     "sass": "^1.26.8",
+    "swr": "^0.2.3",
     "win-node-env": "^0.4.0"
   }
 }

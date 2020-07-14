@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
-import { useGetData } from '@/actions'
+import { useGetPosts } from '@/actions'
 import { useRouter } from 'next/router'
 
 
 const Portfolio = () => {
     const router = useRouter();
-    const { data: portfolio, error, loading } = useGetData(router.query.id ? `/api/v1/posts/${router.query.id}` : null);
+    const { data: portfolio, error, loading } = useGetPosts(router.query.id ? `/api/v1/posts/${router.query.id}` : null);
     // property: alias
     return (
         <BaseLayout>
