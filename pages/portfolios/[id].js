@@ -1,14 +1,15 @@
 import axios from 'axios'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
-import { useGetPosts } from '@/actions'
+import { useGetPostById } from '@/actions'
 import { useRouter } from 'next/router'
 
 
 const Portfolio = () => {
     const router = useRouter();
-    const { data: portfolio, error, loading } = useGetPosts(router.query.id ? `/api/v1/posts/${router.query.id}` : null);
-    // property: alias
+    const { data: portfolio, error, loading } = useGetPostById(router.query.id);
+    // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
+    //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
     return (
         <BaseLayout>
             <BasePage>
