@@ -2,10 +2,12 @@ import Link from 'next/link'
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
 import { useGetPosts } from '@/actions'
+import { useGetUser } from '@/actions/user'
 
 const Portfolios = () => {
 
     const { data, error, loading } = useGetPosts();
+    const { data: userData, loading: userLoading } = useGetUser();
     // useSWR will execute the given fn() to fetch the data and assign the fetch result to teh data prop, depending on the result
     debugger;
     // onPageLoad => useGetPosts() returns an [] on the 1st call and after page is rendered, useEffect gets triggered and -
@@ -23,7 +25,7 @@ const Portfolios = () => {
     }
 
     return (
-        <BaseLayout>
+        <BaseLayout user={userData} loading={userLoading} >
             <BasePage>
                 <h1>Portfolios Page</h1>
                 {loading &&

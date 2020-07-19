@@ -3,15 +3,17 @@ import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
 import { useGetPostById } from '@/actions'
 import { useRouter } from 'next/router'
+import { useGetUser } from '@/actions/user'
 
 
 const Portfolio = () => {
     const router = useRouter();
     const { data: portfolio, error, loading } = useGetPostById(router.query.id);
+    const { data: userData, loading: userLoading } = useGetUser();
     // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
     //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
     return (
-        <BaseLayout>
+        <BaseLayout user={userData} loading={userLoading} >
             <BasePage>
                 {loading && <h5>Loading Data.....</h5>}
                 {error && <div className="alert alert-danger">{error.message}</div>}
