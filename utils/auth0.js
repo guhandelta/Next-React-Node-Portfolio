@@ -12,3 +12,4 @@ export default initAuth0({
         cookieSecret: process.env.AUTH0_COOKIE_SECRET
     }
 });
+

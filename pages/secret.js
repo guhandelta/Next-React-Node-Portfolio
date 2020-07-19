@@ -2,8 +2,9 @@ import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
 import { useGetUser } from '@/actions/user'
 import { Redirect } from '@/components/shared'
+import withAuth from '@/hoc/withAuth'
 
-const Secret = () => {
+const Secret = ({ title }) => {
     const { data, loading } = useGetUser();
     if (loading) {
         return <p>Loading...</p>
@@ -18,9 +19,12 @@ const Secret = () => {
             <BaseLayout user={data} loading={loading} >
                 <BasePage>
                     <h1>Secret  Page</h1>
+                    <h3>{title}</h3>
                 </BasePage>
             </BaseLayout>
         )
     }
 }
-export default Secret;
+
+
+export default withAuth(Secret);
