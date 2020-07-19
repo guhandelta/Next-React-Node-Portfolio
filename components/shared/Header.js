@@ -24,8 +24,8 @@ const BsNavBrand = () => (
     </Link>
 );
 
-const LoginLink = () => <BSNavLink title="Login" href="/api/v1/login" />
-const LogoutLink = () => <BSNavLink title=" " href="/api/v1/login" />
+const LoginLink = () => <a className='nav-link port-navbar-link' href="/api/v1/login">Login</a>
+const LogoutLink = () => <span className="nav-link port-navbar-link clickable">Logout</span>
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
