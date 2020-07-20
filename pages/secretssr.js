@@ -1,7 +1,7 @@
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
 // import { useGetUser } from '@/actions/user'
-import auth0 from '@/utils/auth0'
+import { authorizedUser } from '@/utils/auth0'
 
 const SecretSSR = ({ user }) => { //Access to randomData, will be available on Initial Render
 
@@ -18,26 +18,14 @@ const SecretSSR = ({ user }) => { //Access to randomData, will be available on I
     )
 }
 
+
 // Getting data from the server and supplying it to the browser
 // Creating a special fn() to implement a funcitonality only in the server
 // This code will be exe only in the server and not sent to the browser
 export const getServerSideProps = async ({ req, res }) => { //Destructurizing the Context Object
-    const session = await auth0.getSession(req); // Fetching the Session object
-    if (!session || !session.user) {
-        // Routing the unauthenticated user to the Login page, from the server-side
-        res.writeHead(302, { // HTTPS code 302 => redirect
-            Location: '/api/v1/login'
-        });
-        // Notify the server as this is the end of res
-        res.end();
-        return {
-            // This block of code won't be touched, if the user is authenticated
-            props: {} //Return Default props
-        };
-    }
-
+    const user = await authorizedUser(req, res);
     return {
-        props: { user: session.user }
+        props: { user }
     }
 }
 
