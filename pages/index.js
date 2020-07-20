@@ -7,7 +7,7 @@ const ROLES = ['Full Stack Developer', 'ReactJS', 'Flask', 'Blockchain Enthusias
 const Index = () => {
 
   const { data, loading } = useGetUser();
-  debugger;
+  // debugger;
 
   return (
     <BaseLayout user={data} loading={loading} className="cover" >
