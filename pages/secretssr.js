@@ -39,6 +39,7 @@ const getTitle = () => {
     })
 }
 
+// fn() to get req,res and retrn props
 export const getServerSideProps = withAuth(async ({ req, res }, user) => {
     const title = await getTitle();
     return title;

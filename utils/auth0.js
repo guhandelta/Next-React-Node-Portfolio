@@ -49,3 +49,6 @@ export const withAuth = (getData) => async ({ req, res }) => {
 
 }
 
+export const isAuthorized = (user, role) => {
+    return (user && user['https://guhaprasaanth-portfolio.com/roles'].includes(role));
+}
