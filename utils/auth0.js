@@ -21,7 +21,8 @@ export const authorizedUser = async (req, res) => { // Will redirect or return a
     if (!session || !session.user) {
         // Routing the unauthenticated user to the Login page, from the server-side
         res.writeHead(302, { // HTTPS code 302 => redirect
-            Location: '/api/v1/login'
+            // Location: '/api/v1/login'
+            Location: '/notAuthenticated'
         });
         // Notify the server as this is the end of res
         res.end();
@@ -36,7 +37,8 @@ export const withAuth = (getData) => async ({ req, res }) => {
     if (!session || !session.user) {
         // Routing the unauthenticated user to the Login page, from the server-side
         res.writeHead(302, { // HTTPS code 302 => redirect
-            Location: '/api/v1/login'
+            // Location: '/api/v1/login'
+            Location: '/notAuthenticated'
         });
         // Notify the server as this is the end of res
         res.end();
