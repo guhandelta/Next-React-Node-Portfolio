@@ -7,13 +7,12 @@ const Redirect = ({ route, ssr }) => {
     useEffect(() => {
         if (ssr) {
             window.location.pathname = route;
-
         } else {
             router.push(route)
         }
     }, []); // [] -> useEffect will be exe only once
 
-    return null
+    return null;
 }
 
 export default Redirect

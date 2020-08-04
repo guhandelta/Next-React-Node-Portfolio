@@ -11,8 +11,8 @@ const withAuth = Component => role => {
         }
 
         if (!data) {
-            return <Redirect ssr route="/notAuthenticated" />;
-            // return <Redirect ssr route="/api/v1/login" />;
+            // return <Redirect ssr route="/notAuthenticated" />;
+            return <Redirect ssr route="/api/v1/login" />;
         } else {
             if (role && !isAuthorized(data, role)) {
                 return <Redirect ssr route="/notAuthorized" />;
@@ -22,8 +22,6 @@ const withAuth = Component => role => {
         }
     }
 }
-
-
 
 // Simples form of above fn()
 // const withAuth = Component => props => <Component title="Welcome Authenticated User" {...props} />
