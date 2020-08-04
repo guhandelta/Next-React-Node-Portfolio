@@ -15,6 +15,10 @@ const auth0 = initAuth0({
 
 export default auth0;
 
+export const isAuthorized = (user, role) => {
+    return (user && user[process.env.AUTH0_NAMESPACE + '/roles'].includes(role));
+}
+
 export const authorizedUser = async (req, res) => { // Will redirect or return a user if a user is logged in
 
     const session = await auth0.getSession(req); // Fetching the Session object
@@ -49,8 +53,4 @@ export const withAuth = getData => role => async ({ req, res }) => {
 
     return { props: { user: session.user, ...data } };
 
-}
-
-export const isAuthorized = (user, role) => {
-    return (user && user['https://guhaprasaanth-portfolio.com/roles'].includes(role));
 }
