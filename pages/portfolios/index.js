@@ -12,7 +12,7 @@ const Portfolios = ({ portfolios }) => {
 
     return (
         <BaseLayout user={userData} loading={userLoading} >
-            <BasePage className="portfolio-page">
+            <BasePage header="Portfolios" className="portfolio-page">
                 <Row>
                     {
                         portfolios.map(portfolio =>
