@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Row, Col } from 'reactstrap';
 import { BaseLayout } from '@/components/layouts'
 import { BasePage } from '@/components/'
@@ -8,6 +8,7 @@ import PortfolioCard from '@/components/portfoliocard'
 
 const Portfolios = ({ portfolios }) => {
     debugger
+    const router = useRouter();
     const { data: userData, loading: userLoading } = useGetUser();
 
     return (
@@ -16,7 +17,13 @@ const Portfolios = ({ portfolios }) => {
                 <Row>
                     {
                         portfolios.map(portfolio =>
-                            <Col md="4" key={portfolio._id}>
+                            <Col
+                                md="4"
+                                onClick={()=>{
+                                    router.push('/portfolios/[id]', `/portfolios/${portfolio._id}`)
+                                }}
+                                key={portfolio._id}
+                            >
                                 <PortfolioCard portfolio={portfolio} />
                             </Col>
                         )
