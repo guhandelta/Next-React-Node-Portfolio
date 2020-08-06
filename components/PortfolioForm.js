@@ -1,10 +1,14 @@
-
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import DatePicker from "react-datepicker";
+
 
 const PortfolioForm = ({ onSubmit }) => {
 
 
     const { register, handleSubmit } = useForm();
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,14 +76,30 @@ const PortfolioForm = ({ onSubmit }) => {
                 <div className="form-group">
                     <label htmlFor="startDate">Start Date</label>
                     <div>
-                        {/* Date picker here */}
+                        <DatePicker
+                            selected={startDate}
+                            onChange={date => setStartDate(date)}
+                            dateFormat="MM/yyyy"
+                            showMonthYearPicker
+                            showFullMonthYearPicker
+                            showTwoColumnMonthYearPicker
+                            showYearDropdown
+                        />
                     </div>
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="endDate">End Date</label>
                     <div>
-                        {/* Date picker here */}
+                        <DatePicker
+                            selected={endDate}
+                            onChange={date => setEndDate(date)}
+                            dateFormat="MM/yyyy"
+                            showMonthYearPicker
+                            showFullMonthYearPicker
+                            showTwoColumnMonthYearPicker
+                            showYearDropdown
+                        />
                     </div>
                 </div>
                 <button
