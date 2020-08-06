@@ -19,13 +19,14 @@ const Portfolio = ({ portfolio }) => {
     )
 }
 
-// export async function getServerSideProps({ query }) { //Destructurize query from teh context object
+// This fn() runs everytime a portfolio link is clicked, so this is best suited for cases where the data changes frequently
+// export async function getServerSideProps({ query }) { //Destructurize query from the context object
 //     const json = await new PortfolioApi().getById(query.id);
 //     const portfolio = json.data;
 
 //     return { props: { portfolio } };
 // }
-// This fn() runs everytime a portfolio link is clicked, so this is best suited for cases where the data changes frequently
+
 
 // This fn() is executed in the build time
 export async function getStaticPaths() {
