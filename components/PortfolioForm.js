@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import DatePicker from "react-datepicker";
 
@@ -6,9 +6,33 @@ import DatePicker from "react-datepicker";
 const PortfolioForm = ({ onSubmit }) => {
 
 
-    const { register, handleSubmit } = useForm();
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const { register, handleSubmit, setValue } = useForm();
+
+    useEffect(() => { 
+        register({ name: 'startDate' });
+        register({ name: 'endDate' });
+    }, [register])
+
+    // const handleStartDate = (date) => {
+    //     setStartDate(date);
+    //     setValue('startDate', date.toISOString()); // toISOString() can be used when there are any issues with the proper time formatting
+    // }
+
+    // const handleEndDate = (date) => {
+    //     setEndDate(date);
+    //     setValue('endDate', date.toISOString());
+    // }
+
+    // Combined the logic of 2 fn() into a single fn() for shorter code
+
+    const handleDateChange = (dateType, setDate) => date => {
+        setValue(dateType, date);
+        setDate(date);
+    }
+
+
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -77,13 +101,9 @@ const PortfolioForm = ({ onSubmit }) => {
                     <label htmlFor="startDate">Start Date</label>
                     <div>
                         <DatePicker
-                            selected={startDate}
-                            onChange={date => setStartDate(date)}
-                            dateFormat="MM/yyyy"
-                            showMonthYearPicker
-                            showFullMonthYearPicker
-                            showTwoColumnMonthYearPicker
                             showYearDropdown
+                            selected={startDate}
+                            onChange={handleDateChange('startDate', setStartDate)}
                         />
                     </div>
                 </div>
@@ -92,13 +112,9 @@ const PortfolioForm = ({ onSubmit }) => {
                     <label htmlFor="endDate">End Date</label>
                     <div>
                         <DatePicker
-                            selected={endDate}
-                            onChange={date => setEndDate(date)}
-                            dateFormat="MM/yyyy"
-                            showMonthYearPicker
-                            showFullMonthYearPicker
-                            showTwoColumnMonthYearPicker
                             showYearDropdown
+                            selected={endDate}
+                            onChange={handleDateChange('endDate', setEndDate)}
                         />
                     </div>
                 </div>

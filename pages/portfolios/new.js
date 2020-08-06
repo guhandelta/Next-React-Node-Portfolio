@@ -7,6 +7,7 @@ import withAuth from '@/hoc/withAuth'
 const AddPortfolio = ({ user, loading }) => {
     const createPortfolio = (data) => {
         alert(JSON.stringify(data));
+        console.log(JSON.stringify(data));
     }
     debugger;
     return (
