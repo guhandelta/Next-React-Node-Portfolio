@@ -10,7 +10,7 @@ const PortfolioForm = ({ onSubmit }) => {
     const [endDate, setEndDate] = useState(null);
     const { register, handleSubmit, setValue } = useForm();
 
-    useEffect(() => { 
+    useEffect(() => {
         register({ name: 'startDate' });
         register({ name: 'endDate' });
     }, [register])
@@ -103,6 +103,7 @@ const PortfolioForm = ({ onSubmit }) => {
                         <DatePicker
                             showYearDropdown
                             selected={startDate}
+                            dateFormat="MM/yyyy"
                             onChange={handleDateChange('startDate', setStartDate)}
                         />
                     </div>
@@ -110,14 +111,40 @@ const PortfolioForm = ({ onSubmit }) => {
 
                 <div className="form-group">
                     <label htmlFor="endDate">End Date</label>
-                    <div>
+                    <div id="endDate">
                         <DatePicker
                             showYearDropdown
+                            disabled={!endDate}
                             selected={endDate}
+                            dateFormat="MM/yyyy"
                             onChange={handleDateChange('endDate', setEndDate)}
                         />
                     </div>
                 </div>
+
+                <div className="form-group">
+                    {endDate &&
+                        <button
+                            type="button"
+                            className="btn btn-danger"
+                            onClick={() => handleDateChange('endDate', setEndDate)(null)}
+                        >
+                            No end date
+                    </button>
+                    }
+                    {!endDate &&
+                        <button
+                            type="button"
+                            className="btn btn-success"
+                            onClick={() => handleDateChange('endDate', setEndDate)(new Date(new Date().setHours(0, 0, 0, 0)))} /* Hours, Minutes, Seconds Milli-Seconds*/
+                        /* new Date() is to provide an initial value as teh onClick won't return/pass any date*/
+                        /* handleDataChange() doesn't return anything, as onClick needs a fn, so handleChangeDate() is triggerred here using `() =>` */
+                        >
+                            Set end date
+                    </button>
+                    }
+                </div>
+
                 <button
                     type="submit"
                     className="btn btn-primary">Create
