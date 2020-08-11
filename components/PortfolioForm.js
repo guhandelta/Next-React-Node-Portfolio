@@ -89,6 +89,7 @@ const PortfolioForm = ({ onSubmit }) => {
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
                     <textarea
+                        ref={register}
                         name="description"
                         rows="5"
                         type="text"
