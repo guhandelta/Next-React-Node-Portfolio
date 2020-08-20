@@ -1,10 +1,13 @@
-import PortfoliosApi from '../../../lib/api/portfolios'
+import PortfoliosApi from '@/lib/api/portfolios'
+import auth0 from '@/utils/auth0'
 
 export default async function createPortfolio(req, res) {
 
     try {
-        const data = req.body;
-        await new PortfoliosApi().createPortfolio(data);
+        const { accessToken } = await auth0.getSession(req);
+        console.log(accessToken);
+        await new PortfoliosApi().createPortfolio(req.body);
+        // await new PortfoliosApi(accessToken).createPortfolio(req.body);
         return res.json({ message: 'Porfolio created successfully....' });
     } catch (e) {
         console.log('Api Error!!......');
