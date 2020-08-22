@@ -4,24 +4,23 @@ import { Row, Col } from 'reactstrap'
 import { BaseLayout, BasePage, PortfolioForm } from '@/components/'
 import withAuth from '@/hoc/withAuth'
 import { useCreatePortfolio } from '@/actions/portfolios'
+import { Redirect } from '@/components/shared'
 
 const AddPortfolio = ({ user, loading: userLoading }) => {
 
     const [createPortfolio, { data, loading, error }] = useCreatePortfolio()
-    debugger
 
-    const _createPortfolio = (data) => { //_ added to eliminate naming conflict
-        createPortfolio(data);
-        console.log(JSON.stringify(data));
+    if (data) {
+        return <Redirect route='/portfolios' />
     }
 
-    // debugger;
     return (
         <BaseLayout user={user} loading={userLoading} >
             <BasePage header="Create Portfolio">
                 <Row>
                     <Col md="8">
-                        <PortfolioForm onSubmit={_createPortfolio} />
+                        <PortfolioForm onSubmit={createPortfolio} />
+                        {error && <div className="alert alert-danger mt-2">{error}</div>}
                     </Col>
                 </Row>
             </BasePage>

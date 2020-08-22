@@ -10,6 +10,6 @@ export default async function createPortfolio(req, res) {
         return res.json(newPortfolio.data);
     } catch (e) {
         console.log('Api Error!!......');
-        return res.status(e.status || 400).end(e.message);
+        return res.status(e.status || 422).json(e.response.data);
     }
 }

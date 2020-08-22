@@ -24,7 +24,8 @@ export function useApiHandler(apiCallHandler) { // Just anonyomizing the API cal
             const json = await apiCallHandler(...data);
             setReqState({ error: null, data: json.data, loading: false });
         } catch (err) {
-            const message = (err.response & err.response.message) || 'Oops!!..... Something went wrong!....';
+            console.log(err.response.data);
+            const message = (err.response && err.response.data) || 'Oops!!..... Something went wrong!....';
             setReqState({ error: message, data: null, loading: false });
         }
     }
