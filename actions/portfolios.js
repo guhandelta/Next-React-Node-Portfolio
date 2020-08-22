@@ -1,29 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios'
+import { useApiHandler } from '@/actions'
 
-function createPortfolio(data) {
-    return axios.post('/api/v1/portfolios', data);
-}
+const createPortfolio = (data) => axios.post('/api/v1/portfolios', data);
 
-export function useCreatePortfolio() {
+export const useCreatePortfolio = () => useApiHandler(createPortfolio);
 
-    const [reqState, setReqState] = useState({
-        error: null,
-        data: null,
-        loading: false
-    });
-
-    const createPortfolioHandler = async (...data) => {
-        setReqState({ error: null, data: null, loading: true });
-        try {
-            const json = await createPortfolio(...data);
-            debugger
-            setReqState({ error: null, data: json.data, loading: false });
-        } catch (err) {
-            debugger
-            const message = (err.response & err.response.message) || 'Oops!!..... Something went wrong!....';
-            setReqState({ error: message, data: null, loading: false });
-        }
-    }
-    return [createPortfolioHandler, { ...reqState }]
-}
+// Another way of calling the funcitons, to shorten the code
+// export const useCreatePortfolio = () => useApiHandler((data) => axios.post('/api/v1/portfolios', data));
