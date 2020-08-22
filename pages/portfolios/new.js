@@ -3,9 +3,12 @@ import { Row, Col } from 'reactstrap'
 
 import { BaseLayout, BasePage, PortfolioForm } from '@/components/'
 import withAuth from '@/hoc/withAuth'
-import { createPortfolio } from '@/actions/portfolios'
+import { useCreatePortfolio } from '@/actions/portfolios'
 
 const AddPortfolio = ({ user, loading: userLoading }) => {
+
+    const [createPortfolio, { data, loading, error }] = useCreatePortfolio()
+    debugger
 
     const _createPortfolio = (data) => { //_ added to eliminate naming conflict
         createPortfolio(data);
