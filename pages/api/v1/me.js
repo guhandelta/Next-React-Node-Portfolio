@@ -8,7 +8,7 @@ export default async function me(req, res) {
         await auth0.handleProfile(req, res);
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         res.status(error.status || 400).end(error.message);
     }
 }

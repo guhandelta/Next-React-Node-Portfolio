@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router'
-import { Row, Col } from 'reactstrap';
-import { BaseLayout } from '@/components/layouts'
-import { BasePage } from '@/components/'
+import { Row, Col, Button } from 'reactstrap';
+import { BaseLayout, BasePage, PortfolioCard } from '@/components/'
 import { useGetUser } from '@/actions/user'
 import PortfolioApi from '@/lib/api/portfolios'
-import PortfolioCard from '@/components/portfoliocard'
+import { isAuthorized } from '@/utils/auth0';
 
 const Portfolios = ({ portfolios }) => {
     debugger
@@ -19,19 +18,35 @@ const Portfolios = ({ portfolios }) => {
                         portfolios.map(portfolio =>
                             <Col
                                 md="4"
-                                onClick={()=>{
+                                onClick={() => {
                                     router.push('/portfolios/[id]', `/portfolios/${portfolio._id}`)
                                 }}
                                 key={portfolio._id}
                             >
-                                <PortfolioCard portfolio={portfolio} />
+                                <PortfolioCard
+                                    portfolio={portfolio}
+                                >
+                                    {userData && isAuthorized(userData, 'admin') &&
+                                        <>
+                                            <Button
+                                                onClick={(e) => { // e -> Event object would be available, when an event handler is provided to the onClick()
+                                                    e.stopPropagation(); // To prevent Event Bubbling and have the event delivered to this element, and not to the parent element(PortfolioCard)
+                                                    router.push('/portfolios/[id]/edit', `/portfolios/${portfolio._id}/edit`)
+                                                }}
+                                                className="mr-2"
+                                                color="warning"
+                                            >Edit</Button>
+                                            <Button color="danger">Delete</Button>
+                                        </>
+                                    }
+                                </PortfolioCard>
                             </Col>
                         )
 
                     }
                 </Row>
             </BasePage>
-        </BaseLayout>
+        </BaseLayout >
     )
 }
 
