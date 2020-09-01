@@ -14,8 +14,20 @@ const PortfolioEdit = ({ user }) => {
 
     // providing the updatePortfolio through a new fn() to provide the the portfolio id and data
     const _updatePortfolio = async (data) => {
+        // try {
+        //     await updatePortfolio(router.query.id, data);
+        //     toast.success('Portfolio has been updated successfully!!', { autoClose: 2500 })
+        // } catch (error) {
+        //     toast.error('Oops!...... Something\'s not right', { autoClose: 2500 })
+        // }
+
+        /* Another Variation of the above check, on the returned Promise */
+        // updatePortfolio(router.query.id, data)
+        //     .then(() => toast.success('Portfolio has been updated successfully!!', { autoClose: 2500 }))
+        //     .catch(() => toast.error('Oops!...... Something\'s not right', { autoClose: 2500 }))
         await updatePortfolio(router.query.id, data);
-        toast.success('Portfolio has been updated successfully!!', { autoClose: 2500 })
+        toast.success('Portfolio has been updated successfully!!', { autoClose: 2500 });
+
     }
 
     debugger;
@@ -32,6 +44,9 @@ const PortfolioEdit = ({ user }) => {
                                 initialData={initialData}
                                 btnLabel="Update"
                             />
+                        }
+                        {error &&
+                            <div className="alert alert-danger mt-2">{error}</div>
                         }
                     </Col>
                 </Row>
