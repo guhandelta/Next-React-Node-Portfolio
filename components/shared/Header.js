@@ -5,14 +5,18 @@ import {
     Navbar,
     NavbarToggler,
     Nav,
-    NavItem
+    NavItem,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
 } from 'reactstrap';
 
 const BSNavLink = props => {
-    const { title, href } = props;
+    const { title, href, className } = props;
     return (
         <Link href={href}>
-            <a className="nav-link port-navbar-link">
+            <a className={`nav-link port-navbar-link ${className}`}>
                 {title}
             </a>
         </Link>
@@ -26,6 +30,27 @@ const BsNavBrand = () => (
 
 const LoginLink = () => <a className='nav-link port-navbar-link' href="/api/v1/login">Login</a>
 const LogoutLink = () => <a className='nav-link port-navbar-link' href="/api/v1/logout">Logout</a>
+
+const AdminMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <Dropdown
+            className="port-navbar-link port-dropdown-menu"
+            nav
+            isOpen={isOpen}
+            toggle={() => setIsOpen(!isOpen)}
+        >
+            <DropdownToggle className="port-dropdown-toggle" nav caret>
+                Admin
+            </DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem>
+                    <BSNavLink className="port-dropdown-item" title="Home" href="/portfolios/new" title="Create Portfolio" />
+                </DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+    )
+}
 
 const Header = ({ user, loading, className }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -56,26 +81,17 @@ const Header = ({ user, loading, className }) => {
                         <NavItem className="port-navbar-item">
                             <BSNavLink title="CV" href="/cv" />
                         </NavItem>
-                        {/* <NavItem className="port-navbar-item">
-                            <BSNavLink title="Secret" href="/secret" />
-                        </NavItem>
-                        <NavItem className="port-navbar-item">
-                            <BSNavLink title="SecretSSR" href="/secretssr" />
-                        </NavItem>
-                        <NavItem className="port-navbar-item">
-                            <BSNavLink title="Admin" href="/adminpage" />
-                        </NavItem>
-                        <NavItem className="port-navbar-item">
-                            <BSNavLink title="AdminSSR" href="/adminpagessr" />
-                        </NavItem>*/}
                     </Nav>
                     <Nav navbar>
                         {!loading &&
                             <>
                                 {user &&
-                                    <NavItem className="port-navbar-item">
-                                        <LogoutLink />
-                                    </NavItem>
+                                    <>
+                                        <AdminMenu />
+                                        <NavItem className="port-navbar-item">
+                                            <LogoutLink />
+                                        </NavItem>
+                                    </>
                                 }
                                 {!user &&
                                     <NavItem className="port-navbar-item">
