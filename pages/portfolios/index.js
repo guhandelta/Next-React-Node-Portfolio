@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Row, Col, Button } from 'reactstrap';
 import { BaseLayout, BasePage, PortfolioCard } from '@/components/'
@@ -6,9 +7,10 @@ import { useDeletePortfolio } from '@/actions/portfolios'
 import PortfolioApi from '@/lib/api/portfolios'
 import { isAuthorized } from '@/utils/auth0';
 
-const Portfolios = ({ portfolios }) => {
+const Portfolios = ({ portfolios: inititalPortfolioData }) => {
     // debugger
     const router = useRouter();
+    const [portfolios, setPortfolios] = useState(inititalPortfolioData);
     const [deletePortfolio, { data, error }] = useDeletePortfolio();
     const { data: userData, loading: userLoading } = useGetUser();
 
@@ -17,7 +19,9 @@ const Portfolios = ({ portfolios }) => {
         const confirmDeletion = confirm("Are you sure you want to delete this experience?");
         if (confirmDeletion) {
             await deletePortfolio(portfolioId);
+            setPortfolios(portfolios.filter(portfolio => portfolio._id !== portfolioId))
         }
+        // const newPortfolio = portfolios.filter(portfolio => portfolio._id !== portfolioId);
     }
 
     return (
