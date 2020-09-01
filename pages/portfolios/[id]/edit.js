@@ -8,10 +8,11 @@ import { useGetPortfolio, useUpdatePortfolio } from '@/actions/portfolios'
 const PortfolioEdit = ({ user }) => {
     const router = useRouter();
     const [updatePortfolio, { data, error, loading }] = useUpdatePortfolio();
+    debugger;
     const { data: initialData } = useGetPortfolio(router.query.id); // Providing data as initialData, alias
 
     // providing the updatePortfolio through a new fn() to provide the the portfolio id and data
-    const _updatePortfolio = () => {
+    const _updatePortfolio = data => {
         updatePortfolio(router.query.id, data);
     }
 
@@ -27,6 +28,7 @@ const PortfolioEdit = ({ user }) => {
                             <PortfolioForm
                                 onSubmit={_updatePortfolio}
                                 initialData={initialData}
+                                btnLabel="Update"
                             />
                         }
                     </Col>

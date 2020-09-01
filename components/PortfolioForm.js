@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import DatePicker from "react-datepicker";
 
 
-const PortfolioForm = ({ onSubmit, initialData = {} }) => {
+const PortfolioForm = ({ onSubmit, initialData = {}, btnLabel }) => {
 
 
     const [startDate, setStartDate] = useState(null);
@@ -154,7 +154,7 @@ const PortfolioForm = ({ onSubmit, initialData = {} }) => {
 
                 <button
                     type="submit"
-                    className="btn btn-primary">Create
+                    className="btn btn-primary">{btnLabel}
                 </button>
             </form>
         </div>
