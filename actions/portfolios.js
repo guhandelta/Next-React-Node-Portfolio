@@ -4,7 +4,7 @@ import { useApiHandler, fetcher } from '@/actions'
 
 const createPortfolio = (data) => axios.post('/api/v1/portfolios', data);
 const updatePortfolio = (id, data) => axios.patch(`/api/v1/portfolios/${id}`, data);
-const deletePortfolio = (id, data) => axios.delete(`/api/v1/portfolios/${id}`);
+const deletePortfolio = (id) => axios.delete(`/api/v1/portfolios/${id}`);
 
 export const useCreatePortfolio = () => useApiHandler(createPortfolio);
 export const useUpdatePortfolio = () => useApiHandler(updatePortfolio);
