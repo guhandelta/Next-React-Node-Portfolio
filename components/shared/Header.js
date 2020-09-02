@@ -11,6 +11,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
+import { isAuthorized } from '@/utils/auth0'
 
 const BSNavLink = props => {
     const { title, href, className } = props;
@@ -43,9 +44,15 @@ const AdminMenu = () => {
             <DropdownToggle className="port-dropdown-toggle" nav caret>
                 Admin
             </DropdownToggle>
-            <DropdownMenu>
+            <DropdownMenu right>
                 <DropdownItem>
                     <BSNavLink className="port-dropdown-item" title="Home" href="/portfolios/new" title="Create Portfolio" />
+                </DropdownItem>
+                <DropdownItem>
+                    <BSNavLink className="port-dropdown-item" title="Home" href="/blogs/editor  " title="Create Blogpost" />
+                </DropdownItem>
+                <DropdownItem>
+                    <BSNavLink className="port-dropdown-item" title="Home" href="/blogs/dashboard" title="Dashboard" />
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>
@@ -87,7 +94,7 @@ const Header = ({ user, loading, className }) => {
                             <>
                                 {user &&
                                     <>
-                                        <AdminMenu />
+                                        {isAuthorized(user, 'admin') && <AdminMenu />}
                                         <NavItem className="port-navbar-item">
                                             <LogoutLink />
                                         </NavItem>
