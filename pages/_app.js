@@ -1,5 +1,5 @@
-import '@/styles/bootstrap.min.css';
-import '@/styles/main.scss'
+import 'styles/bootstrap.min.css';
+import 'styles/main.scss'
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-toastify/dist/ReactToastify.css';
 

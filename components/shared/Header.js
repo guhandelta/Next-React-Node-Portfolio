@@ -11,7 +11,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
-import { isAuthorized } from '@/utils/auth0'
+import { isAuthorized } from 'utils/auth0'
 
 const BSNavLink = props => {
     const { title, href, className } = props;
@@ -41,7 +41,7 @@ const AdminMenu = () => {
             isOpen={isOpen}
             toggle={() => setIsOpen(!isOpen)}
         >
-            <DropdownToggle className="port-dropdown-toggle" nav caret>
+            <DropdownToggle className="port-dropdown-toggle my-name" nav caret>
                 Admin
             </DropdownToggle>
             <DropdownMenu right>

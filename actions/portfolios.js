@@ -1,6 +1,7 @@
 import useSWR from 'swr';
 import axios from 'axios'
-import { useApiHandler, fetcher } from '@/actions'
+import { useApiHandler, fetcher } from 'actions' // @/ is no longer required as NextJS 9.4.x 's absolute path, takes care of it => app folder-
+//- base url -> jsconfig.json
 
 const createPortfolio = (data) => axios.post('/api/v1/portfolios', data);
 const updatePortfolio = (id, data) => axios.patch(`/api/v1/portfolios/${id}`, data);

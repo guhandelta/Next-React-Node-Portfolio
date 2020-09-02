@@ -77,7 +77,8 @@ export async function getStaticProps() {
     const json = await new PortfolioApi().getAll();
     const portfolios = json.data; //Will get the portfolios for this page, as props
     return {
-        props: { portfolios }
+        props: { portfolios },
+        unstable_revalidate: 1 // NextJS will attempt to re-generate the page when a request comes in at most, once every second
     }
 }
 

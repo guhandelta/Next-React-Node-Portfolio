@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { fetcher } from '@/actions'
+import { fetcher } from 'actions'
 
 
 // The user data is fetched by making a fetch() call to the /api/v1/me endpoint, using useSWR

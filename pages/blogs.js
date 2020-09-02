@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
-import { BaseLayout } from '@/components/layouts'
-import { BasePage } from '@/components/'
-import { useGetUser } from '@/actions/user'
+import { BasePage, BaseLayout } from 'components'
+import { useGetUser } from 'actions/user'
 
 const Blog = () => {
     const { data, loading } = useGetUser();

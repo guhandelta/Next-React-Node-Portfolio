@@ -1,7 +1,7 @@
 import Typed from 'react-typed'
 import { Container, Row, Col } from 'reactstrap';
-import { BaseLayout } from '@/components/layouts/';
-import { useGetUser } from '@/actions/user'
+import { BaseLayout } from 'components/layouts/';
+import { useGetUser } from 'actions/user'
 
 const ROLES = ['Full Stack Developer', 'ReactJS', 'Flask', 'Blockchain Enthusiast', 'Nature Enthusiast', 'Team Player', 'NodeJS', 'Django'];
 const Index = () => {

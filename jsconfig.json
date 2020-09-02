@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".", //Alias for using @ is not requried, but it has been created, as the app devloped till now, works in that way
+        "paths": {
+            "@/*": [
+                "/*"
+            ]
+        }
+    }
+}
