@@ -9,7 +9,8 @@ const About = () => {
     return (
         <BaseLayout user={data} loading={loading} >
             <BasePage>
-                <h1>About Page</h1>
+                <h1 className="my-name">About Page</h1>
+                <h2>Some random stuff about me</h2>
             </BasePage>
         </BaseLayout>
     )

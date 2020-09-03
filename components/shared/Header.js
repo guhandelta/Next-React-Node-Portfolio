@@ -68,7 +68,6 @@ const Header = ({ user, loading, className }) => {
                 className={`port-navbar port-default absolute ${className}`}
                 dark
                 expand="md">
-                {/* <NavbarBrand className="port-navbar-brand my-name" href="/">Guhaprasaanth</NavbarBrand> */}
                 <BsNavBrand />
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>

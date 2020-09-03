@@ -1,14 +1,17 @@
-import React, { Component } from 'react'
-import { BasePage, BaseLayout } from '@/components'
 import withAuth from '@/hoc/withAuth'
+import { BasePage, BaseLayout } from '@/components'
+import { Editor } from 'slate-simple-editor'
 
-const Editor = ({ user, loading }) => {
+const BlogEditor = ({ user, loading }) => {
+
+    const saveBlog = data => console.log(data);
+
     return (
         <BaseLayout user={user} loading={loading} >
-            <BasePage header="Blog Editor!">
-                <h1>Editor Page</h1>
+            <BasePage>
+                <Editor header="What's the Title?" loading={true} onSave={saveBlog} />
             </BasePage>
         </BaseLayout>
     )
 }
-export default withAuth(Editor)('admin');
+export default withAuth(BlogEditor)('admin');
