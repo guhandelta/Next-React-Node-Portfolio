@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import withAuth from 'hoc/withAuth'
 import { BasePage, BaseLayout } from '@/components'
 import { Editor } from 'slate-simple-editor'
-import { useCreateBlogpost, useGetBlog } from 'actions/blogs'
+import { useUpdateBlog, useGetBlog } from 'actions/blogs'
 
 
 
@@ -11,7 +11,16 @@ const BlogUpdater = ({ user, loading }) => {
 
     const router = useRouter();
     const { data } = useGetBlog(router.query.id);
-    debugger;
+    const [updateBlog, { error, loading: updateLoading }] = useUpdateBlog();
+
+    const _updateBlog = async data => {
+        await updateBlog(router.query.id, data);
+        toast.success("Blog Updated successfully");
+    }
+
+    if (error) {
+        toast.error(error);
+    }
 
     return (
         <BaseLayout user={user} loading={loading} >
@@ -20,7 +29,8 @@ const BlogUpdater = ({ user, loading }) => {
                     <Editor
                         header="Update your blogpost..."
                         initialContent={data.content}
-                        onSave={() => { }}
+                        onSave={_updateBlog}
+                        loading={updateLoading}
                     />
                 }
             </BasePage>

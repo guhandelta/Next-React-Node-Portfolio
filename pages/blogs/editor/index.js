@@ -18,7 +18,7 @@ const BlogEditor = ({ user, loading }) => {
         router.push('/blogs/editor/[id]', `/blogs/editor/${createdBlogpost._id}`)
     }
 
-    if (error) { toast.error(error.message); }
+    if (error) { toast.error(error); }
 
     return (
         <BaseLayout user={user} loading={loading} >
