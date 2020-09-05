@@ -10,13 +10,13 @@ const BlogEditor = ({ user, loading }) => {
     const [createBlog, { data: newBlogpost, error }] = useCreateBlogpost();
 
     const saveBlog = async data => {
+        debugger;
         await createBlog(data);
+        console.log(data);
         alert('Blogpost created successfully!!....');
     }
 
-    if (error) {
-        toast.error(error.message);
-    }
+    if (error) { toast.error(error.message); }
 
     return (
         <BaseLayout user={user} loading={loading} >
