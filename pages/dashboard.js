@@ -8,16 +8,17 @@ import BlogsApi from 'lib/api/blogs'
 
 const Dashboard = ({ user, blogs }) => {
 
+
+    const confirmStatus = blogStatus => blogStatus === 'draft' ? { label: 'Publish Story', value: 'published' }
+        : { label: 'Make it a Draft', value: 'draft' }
     const dropdownOptions = (blog) => {
-
-        const createOtions = blog => {
-
-        }
+        const option = confirmStatus(blog.status);
 
         return [
-            { key: `${blog._id} => Published`, text: 'Published', handlers: { onClick: () => { alert('Published') } } },
+            { key: `${blog._id} => Published`, text: option.label, handlers: { onClick: () => { alert(`Changing Status to ${option.value}`) } } },
             { key: `${blog._id} => Deleted`, text: 'Delete', handlers: { onClick: () => { alert('Delete') } } }]
     }
+
 
     const renderBlogs = (blogs, status) =>
         <ul className="user-blogs-list">
