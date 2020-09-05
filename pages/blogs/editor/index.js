@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import withAuth from 'hoc/withAuth'
 import { BasePage, BaseLayout } from '@/components'
@@ -7,13 +8,14 @@ import { useCreateBlogpost } from 'actions/blogs'
 
 const BlogEditor = ({ user, loading }) => {
 
-    const [createBlog, { data: newBlogpost, error }] = useCreateBlogpost();
+    const router = useRouter();
+    const [createBlog, { data: newBlogpost, error, loading: blogLoading }] = useCreateBlogpost();
 
     const saveBlog = async data => {
         debugger;
-        await createBlog(data);
+        const createdBlogpost = await createBlog(data);
         console.log(data);
-        alert('Blogpost created successfully!!....');
+        router.push('/blogs/editor/[id]', `/blogs/editor/${createdBlogpost._id}`)
     }
 
     if (error) { toast.error(error.message); }
@@ -21,7 +23,11 @@ const BlogEditor = ({ user, loading }) => {
     return (
         <BaseLayout user={user} loading={loading} >
             <BasePage>
-                <Editor header="Compose your new blogpost" loading={true} onSave={saveBlog} />
+                <Editor
+                    header="Compose your new blogpost"
+                    loading={blogLoading}
+                    onSave={saveBlog}
+                />
             </BasePage>
         </BaseLayout>
     )
