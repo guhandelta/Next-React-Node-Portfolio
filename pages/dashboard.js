@@ -2,9 +2,12 @@ import Link from 'next/link'
 import { Row, Col } from 'reactstrap';
 import { BasePage, BaseLayout } from 'components';
 import { withAuth } from 'utils/auth0';
+import auth0 from 'utils/auth0';
 import { Dashead } from 'components/shared';
+import BlogsApi from 'lib/api/blogs'
 
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user, blogs }) => {
+    debugger;
     return (
         <BaseLayout navClass="transparent" user={user} loading={false}>
             <Dashead background="/images/dashboard.jpg" />
@@ -22,6 +25,10 @@ const Dashboard = ({ user }) => {
     )
 }
 
-export const getServerSideProps = withAuth()('admin');
+export const getServerSideProps = withAuth(async ({ req, res }) => {
+    const { accessToken } = await auth0.getSession(req);
+    const json = await new BlogsApi(accessToken).getByUser();
+    return { blogs: json.data }
+})('admin');
 
 export default Dashboard
