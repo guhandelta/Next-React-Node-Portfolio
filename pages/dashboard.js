@@ -3,10 +3,21 @@ import { Row, Col } from 'reactstrap';
 import { BasePage, BaseLayout } from 'components';
 import { withAuth } from 'utils/auth0';
 import auth0 from 'utils/auth0';
-import { Dashead } from 'components/shared';
+import { Dashead, PortButtonDropdown } from 'components';
 import BlogsApi from 'lib/api/blogs'
 
 const Dashboard = ({ user, blogs }) => {
+
+    const dropdownOptions = (blog) => {
+
+        const createOtions = blog => {
+
+        }
+
+        return [
+            { key: `${blog._id} => Published`, text: 'Published', handlers: { onClick: () => { alert('Published') } } },
+            { key: `${blog._id} => Deleted`, text: 'Delete', handlers: { onClick: () => { alert('Delete') } } }]
+    }
 
     const renderBlogs = (blogs, status) =>
         <ul className="user-blogs-list">
@@ -18,6 +29,7 @@ const Dashboard = ({ user, blogs }) => {
                                 {blog.title}
                             </a>
                         </Link>
+                        <PortButtonDropdown items={dropdownOptions(blog)} />
                     </li>
                 )
             }

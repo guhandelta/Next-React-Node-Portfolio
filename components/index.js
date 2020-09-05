@@ -3,6 +3,6 @@ import Nav from './nav'
 import BaseLayout from './layouts/BaseLayout'
 import PortfolioForm from './PortfolioForm'
 import PortfolioCard from './PortfolioCard'
-import Dashead from './shared/Dashead'
+import { Dashead, PortButtonDropdown } from './shared'
 
-export { BaseLayout, BasePage, Nav, PortfolioForm, PortfolioCard, Dashead }
+export { BaseLayout, BasePage, Nav, PortfolioForm, PortfolioCard, Dashead, PortButtonDropdown }
