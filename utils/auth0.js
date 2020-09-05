@@ -43,8 +43,8 @@ export const withAuth = getData => role => async ({ req, res }) => {
     if (!session || !session.user || (role && !isAuthorized(session.user, role))) {
         // Routing the unauthenticated user to the Login page, from the server-side
         res.writeHead(302, { // HTTPS code 302 => redirect
-            // Location: '/api/v1/login'
-            Location: '/notAuthenticated'
+            // Location: '/notAuthenticated'
+            Location: '/api/v1/login'
         });
         // Notify the server as this is the end of res
         res.end();

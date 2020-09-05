@@ -46,13 +46,13 @@ const AdminMenu = () => {
             </DropdownToggle>
             <DropdownMenu right>
                 <DropdownItem>
-                    <BSNavLink className="port-dropdown-item" title="Home" href="/portfolios/new" title="Create Portfolio" />
+                    <BSNavLink className="port-dropdown-item" title="Update Portfolio" href="/portfolios/new" title="Create Portfolio" />
                 </DropdownItem>
                 <DropdownItem>
-                    <BSNavLink className="port-dropdown-item" title="Home" href="/blogs/editor  " title="Create Blogpost" />
+                    <BSNavLink className="port-dropdown-item" title="Create Blogpost" href="/blogs/editor  " title="Create Blogpost" />
                 </DropdownItem>
                 <DropdownItem>
-                    <BSNavLink className="port-dropdown-item" title="Home" href="/blogs/dashboard" title="Dashboard" />
+                    <BSNavLink className="port-dropdown-item" title="Dashboard" href="/dashboard" title="Dashboard" />
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>
