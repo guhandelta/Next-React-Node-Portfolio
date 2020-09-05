@@ -12,7 +12,7 @@ const BlogEditor = ({ user, loading }) => {
     const [createBlog, { data: newBlogpost, error, loading: blogLoading }] = useCreateBlogpost();
 
     const saveBlog = async data => {
-        debugger;
+        // debugger;
         const createdBlogpost = await createBlog(data);
         console.log(data);
         router.push('/blogs/editor/[id]', `/blogs/editor/${createdBlogpost._id}`)
