@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { BasePage, BaseLayout } from 'components';
 import withAuth from 'hoc/withAuth';
 import { Dashead, PortButtonDropdown } from 'components';
@@ -57,7 +57,14 @@ const Dashboard = ({ user, loading }) => {
 
     return (
         <BaseLayout navClass="transparent" user={user} loading={loading}>
-            <Dashead background="/images/dashboard.jpg" />
+            <Dashead background="/images/dashboard.jpg" title="Blogs Dashboard">
+                <h1>Blogs Dashboard</h1>
+                <span className="subheading">
+                    <Link href="/blogs/editor">
+                        <Button color="primary">Create a new blog</Button>
+                    </Link>
+                </span>
+            </Dashead>
             <BasePage className="blog-user-page">
                 <Row>
                     <Col md="6" className="mx-auto text-center">
