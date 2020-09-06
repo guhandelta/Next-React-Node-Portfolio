@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import Typed from 'react-typed'
 import { Container, Row, Col } from 'reactstrap';
 import { BaseLayout } from 'components/layouts/';
@@ -6,20 +7,52 @@ import { useGetUser } from 'actions/user'
 const ROLES = ['Full Stack Developer', 'ReactJS', 'Flask', 'Blockchain Enthusiast', 'Nature Enthusiast', 'Team Player', 'NodeJS', 'Django'];
 const Index = () => {
 
+  const [isFlipping, setIsFlipping] = useState(false);
   const { data, loading } = useGetUser();
-  // debugger;
+  const flipInterval = useRef();
+
+  useEffect(() => {
+    flipAnimation();
+    //return -> Dispose fn(), which will be executed whenever the user navigates away from the page
+    return () => flipInterval.current && clearInterval(flipInterval.current); // clears the interval for setInterval(), to prevent the-
+    //- setInterval(), from being called, when the user is not on that page
+  }, []);
+
+  const flipAnimation = () => {
+    flipInterval.current = setInterval(() => { // To provide the value of a reference, `.current` should be used
+      // setIsFlipping(!isFlipping); => This won't work, as isFlipping will be undefined in this case => error
+      setIsFlipping((prevFlipping) => !prevFlipping); //Manipulating the state inside a setInterval() can only be done using a callBack fn()
+    }, 2000)
+  }
 
   return (
-    <BaseLayout user={data} loading={loading} className="cover" navClass="transparent" >
+    <BaseLayout
+      user={data}
+      loading={loading}
+      className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}
+      navClass="transparent"
+    >
       <div className="main-section">
         <div className="background-image">
-          <img src="/images/background-index.png" />
+          <img src="/images/background-index-tamil.png" />
         </div>
         <Container>
           <Row>
             <Col md="6">
               <div className="hero-section">
-                <div className={`flipper`}>
+                <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
+                  <div className="front">
+                    <div className="hero-section-content">
+                      <h2> Full Stack Web Developer </h2>
+                      <div className="hero-section-content-intro">
+                        Have a look at my portfolio and job history.
+                        </div>
+                    </div>
+                    <img className="image" src="/images/section-1.png" />
+                    <div className="shadow-custom">
+                      <div className="shadow-inner"> </div>
+                    </div>
+                  </div>
                   <div className="back">
                     <div className="hero-section-content">
                       <h2> Full Stack Web Developer </h2>
@@ -27,8 +60,8 @@ const Index = () => {
                         Have a look at my portfolio and job history.
                         </div>
                     </div>
-                    <img className="image" src="/images/Eagle-Creek-Park-Lake.png" />
-                    <div className="shadow-custom">
+                    <img className="image" src="/images/section-2.png" />
+                    <div className="shadow-custom shadow-custom-orange">
                       <div className="shadow-inner"> </div>
                     </div>
                   </div>
