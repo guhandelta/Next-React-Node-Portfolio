@@ -1,18 +1,21 @@
 import Link from 'next/link'
 import { Row, Col } from 'reactstrap';
 import { BasePage, BaseLayout } from 'components';
-import { withAuth } from 'utils/auth0';
-import auth0 from 'utils/auth0';
+import withAuth from 'hoc/withAuth';
 import { Dashead, PortButtonDropdown } from 'components';
-import BlogsApi from 'lib/api/blogs'
-import { useUpdateBlog } from 'actions/blogs'
+import { useUpdateBlog, useGetUserBlogs } from 'actions/blogs'
+import { toast } from 'react-toastify';
 
-const Dashboard = ({ user, blogs }) => {
+const Dashboard = ({ user, loading }) => {
 
     const [updateBlog] = useUpdateBlog();
+    const { data: blogs, mutate } = useGetUserBlogs();
 
     const modifyBlogStatus = async (blogId, status) => {
-        await updateBlog(blogId, { status });
+        await updateBlog(blogId, { status })
+            .then(() => mutate())
+            .catch(() => toast.error("Oops! Something went wrong...."))
+        // mutate(); // mutate() can be called after modifying the blog, which will re-fetch useGetUserBlogs()
     }
 
     const confirmStatus = blogStatus => blogStatus === 'draft' ? { label: 'Publish Story', value: 'published' }
@@ -33,7 +36,7 @@ const Dashboard = ({ user, blogs }) => {
 
     const renderBlogs = (blogs, status) =>
         <ul className="user-blogs-list">
-            {
+            {blogs && // renderBlogsblogs = [], status) is another options/alternative
                 blogs.filter(blog => blog.status === status).map(blog =>
                     <li key={blog._id}>
                         <Link href="/blogs/editor/[id]" as={`blogs/editor/${blog._id}`}>
@@ -48,7 +51,7 @@ const Dashboard = ({ user, blogs }) => {
         </ul>
 
     return (
-        <BaseLayout navClass="transparent" user={user} loading={false}>
+        <BaseLayout navClass="transparent" user={user} loading={loading}>
             <Dashead background="/images/dashboard.jpg" />
             <BasePage className="blog-user-page">
                 <Row>
@@ -66,10 +69,11 @@ const Dashboard = ({ user, blogs }) => {
     )
 }
 
-export const getServerSideProps = withAuth(async ({ req, res }) => {
-    const { accessToken } = await auth0.getSession(req);
-    const json = await new BlogsApi(accessToken).getByUser();
-    return { blogs: json.data }
-})('admin');
+// Replacing this feature of getting the data from serverside by fetching data from client
+// export const getServerSideProps = withAuth(async ({ req, res }) => {
+//     const { accessToken } = await auth0.getSession(req);
+//     const json = await new BlogsApi(accessToken).getByUser();
+//     return { blogs: json.data }
+// })('admin');
 
-export default Dashboard
+export default withAuth(Dashboard)('admin');
