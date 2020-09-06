@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Row, Col, Container } from 'reactstrap';
 import { BasePage, BaseLayout, Dashead, BlogCard } from 'components'
 import { useGetUser } from 'actions/user'
@@ -33,7 +32,7 @@ const Blog = ({ blogs }) => {
 }
 
 // getStaticProps gets called at build time due to which it does not receive data that’s only available during request time,
-//- such as query parameters or HTTP headers, as it generates static HTML.
+//-  such as query parameters or HTTP headers, as it generates static HTML.
 export async function getStaticProps() {
     const jsonBlogs = await new BlogsApi().getAll();
     return {

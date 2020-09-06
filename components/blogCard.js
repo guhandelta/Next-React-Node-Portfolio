@@ -1,5 +1,6 @@
 import Link from 'next/link'
- 
+import moment from 'moment'
+
 const BlogCard = ({ blog }) =>
     <div>
         <div className="post-preview clickable">
@@ -15,7 +16,7 @@ const BlogCard = ({ blog }) =>
             </Link>
             <p className="post-meta">Posted by
                                             <a href="#"> Guhaprasaanth Nandagopal </a>
-                {blog.createdAt}
+                - {moment(blog.createdAt).format('LLLL')}
             </p>
         </div>
     </div>
