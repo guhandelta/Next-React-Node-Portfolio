@@ -30,7 +30,12 @@ const Dashboard = ({ user, loading }) => {
                 text: option.label,
                 handlers: { onClick: () => modifyBlogStatus(blog._id, option.value) }
             },
-            { key: `${blog._id} => Deleted`, text: 'Delete', handlers: { onClick: () => { alert('Delete') } } }]
+            {
+                key: `${blog._id}-delete`,
+                text: 'Delete',
+                handlers: { onClick: () => modifyBlogStatus(blog._id, 'deleted') }
+            }
+        ]
     }
 
 
