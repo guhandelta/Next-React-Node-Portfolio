@@ -13,15 +13,16 @@ import {
     DropdownItem
 } from 'reactstrap';
 import { isAuthorized } from 'utils/auth0'
+import ActiveLink from './ActiveLink'
 
 const BSNavLink = props => {
     const { title, href, className } = props;
     return (
-        <Link href={href}>
+        <ActiveLink activeClass="active" href={href}>
             <a className={`nav-link port-navbar-link ${className}`}>
                 {title}
             </a>
-        </Link>
+        </ActiveLink>
     );
 }
 const BsNavBrand = () => (
