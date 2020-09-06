@@ -5,17 +5,28 @@ import { withAuth } from 'utils/auth0';
 import auth0 from 'utils/auth0';
 import { Dashead, PortButtonDropdown } from 'components';
 import BlogsApi from 'lib/api/blogs'
+import { useUpdateBlog } from 'actions/blogs'
 
 const Dashboard = ({ user, blogs }) => {
 
+    const [updateBlog] = useUpdateBlog();
+
+    const modifyBlogStatus = async (blogId, status) => {
+        await updateBlog(blogId, { status });
+    }
 
     const confirmStatus = blogStatus => blogStatus === 'draft' ? { label: 'Publish Story', value: 'published' }
         : { label: 'Make it a Draft', value: 'draft' }
+
     const dropdownOptions = (blog) => {
         const option = confirmStatus(blog.status);
 
         return [
-            { key: `${blog._id} => Published`, text: option.label, handlers: { onClick: () => { alert(`Changing Status to ${option.value}`) } } },
+            {
+                key: `${blog._id} => Published`,
+                text: option.label,
+                handlers: { onClick: () => modifyBlogStatus(blog._id, option.value) }
+            },
             { key: `${blog._id} => Deleted`, text: 'Delete', handlers: { onClick: () => { alert('Delete') } } }]
     }
 

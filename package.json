@@ -25,6 +25,7 @@
     "reactstrap": "^8.5.1",
     "sass": "^1.26.8",
     "slate-simple-editor": "git+https://github.com/jerga99/slate-simple-editor.git",
+    "slugify": "^1.4.5",
     "swr": "^0.2.3",
     "win-node-env": "^0.4.0"
   }
