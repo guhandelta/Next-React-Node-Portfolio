@@ -26,7 +26,11 @@ const Portfolios = ({ portfolios: inititalPortfolioData }) => {
 
     return (
         <BaseLayout user={userData} loading={userLoading} >
-            <BasePage header="Portfolios" className="portfolio-page">
+            <BasePage
+                header="Portfolios"
+                className="portfolio-page"
+                title="Portfolio - Guhaprasaanth"
+            >
                 <Row>
                     {
                         portfolios.map(portfolio =>

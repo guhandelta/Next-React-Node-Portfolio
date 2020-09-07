@@ -10,7 +10,10 @@ const Portfolio = ({ portfolio }) => {
     //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
     return (
         <BaseLayout user={userData} loading={userLoading} >
-            <BasePage header="Portfolio Detail">
+            <BasePage
+                header="Portfolio Detail"
+                title={`${portfolio.title} - Guhaprasaanth`}
+            >
                 {
                     JSON.stringify(portfolio)
                 }

@@ -23,7 +23,7 @@ const About = () => {
 
     return (
         <BaseLayout user={data} loading={loading}>
-            <BasePage className="about-page">
+            <BasePage className="about-page" title="About me - Guhaprasaanth">
                 <Row className="mt-5">
                     <Col md="6">
                         <div className="left-side">

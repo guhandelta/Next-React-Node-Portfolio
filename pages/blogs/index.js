@@ -15,7 +15,9 @@ const Blog = ({ blogs }) => {
                 <span className="subheading">Programming, travelling...</span>
             </Dashead>
             <BasePage
-                className="blog-body">
+                className="blog-body"
+                title="Blogs - Guhaprasaanth"
+            >
                 <Row>
                     {
                         blogs.map(blog =>

@@ -9,7 +9,10 @@ const BlogDetail = ({ blog, author }) => {
     debugger;
     return (
         <BaseLayout user={data} loading={loading} >
-            <BasePage className="slate-container">
+            <BasePage
+                className="slate-container"
+                title={`${blog.title} - Guhaprasaanth`}
+            >
                 <Row>
                     <Col md={{ size: 8, offset: 2 }}> {/*Entire page, which is divided into 12 columns, will now be divided into 6 col ||
                     offset 2 will add 2 col padding on both sides*/}
