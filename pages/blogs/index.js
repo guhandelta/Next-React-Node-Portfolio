@@ -34,9 +34,10 @@ const Blog = ({ blogs }) => {
 // getStaticProps gets called at build time due to which it does not receive data that’s only available during request time,
 //-  such as query parameters or HTTP headers, as it generates static HTML.
 export async function getStaticProps() {
-    const jsonBlogs = await new BlogsApi().getAll();
+    const { data } = await new BlogsApi().getAll();
+    const blogs = data.map(item => ({ ...item.blog, author: item.author }))
     return {
-        props: { blogs: jsonBlogs.data },
+        props: { blogs },
         unstable_revalidate: 60 //Refetch the data every 60secs
     }
 }

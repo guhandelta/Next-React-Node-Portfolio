@@ -15,7 +15,7 @@ const BlogCard = ({ blog }) =>
                 </a>
             </Link>
             <p className="post-meta">Posted by
-                                            <a href="#"> Guhaprasaanth Nandagopal </a>
+                    &nbsp;<a href="#">{blog.author.name}</a>&nbsp;
                 - {moment(blog.createdAt).format('LLLL')}
                 {/* {blog.createdAt.split('T')[0].split('-').join(':')} => will just display YYYY:MM:DD */}
             </p>
