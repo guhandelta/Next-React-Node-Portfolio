@@ -6,12 +6,14 @@ import BlogsApi from 'lib/api/blogs'
 
 const BlogDetail = ({ blog, author }) => {
     const { data, loading } = useGetUser();
+    console.log(blog);
     debugger;
     return (
         <BaseLayout user={data} loading={loading} >
             <BasePage
                 className="slate-container"
                 title={`${blog.title} - Guhaprasaanth`}
+                metaDescription={blog.subTitle}
             >
                 <Row>
                     <Col md={{ size: 8, offset: 2 }}> {/*Entire page, which is divided into 12 columns, will now be divided into 6 col ||

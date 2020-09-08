@@ -6,6 +6,7 @@ import PortfolioApi from '@/lib/api/portfolios'
 
 const Portfolio = ({ portfolio }) => {
     const { data: userData, loading: userLoading } = useGetUser();
+    console.log(portfolio);
     // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
     //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
     return (
