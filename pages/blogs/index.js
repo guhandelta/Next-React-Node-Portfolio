@@ -8,8 +8,11 @@ const Blog = ({ blogs }) => {
     debugger
     return (
         <BaseLayout
-            navClass="transparent" className="blog-listing-page"
-            user={data} loading={loading}>
+            navClass="transparent"
+            className="blog-listing-page"
+            user={data}
+            loading={loading}
+        >
             <Dashead background="/images/dashboard.jpg" title="Blogs" subtitle="Checkout all the blogs">
                 <h1>Fresh Blogs</h1>
                 <span className="subheading">Programming, travelling...</span>

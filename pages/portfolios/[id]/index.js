@@ -1,7 +1,6 @@
-import { BaseLayout } from '@/components/layouts'
-import { BasePage } from '@/components/'
-import { useGetUser } from '@/actions/user'
-import PortfolioApi from '@/lib/api/portfolios'
+import { BaseLayout, BasePage } from 'components'
+import { useGetUser } from 'actions/user'
+import PortfolioApi from 'lib/api/portfolios'
 
 
 const Portfolio = ({ portfolio }) => {
@@ -12,15 +11,27 @@ const Portfolio = ({ portfolio }) => {
     // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
     //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
     return (
-        <BaseLayout user={userData} loading={userLoading} >
+        <BaseLayout user={userData} loading={userLoading} navClass="transparent">
             <BasePage
+                noWrapper
+                indexPage
+
                 title={`${portfolio.title} - Guhaprasaanth`}
-                header="Portfolio Detail"
                 metaDescription={(portfolio.description).substr(1, 75)}
             >
-                {
-                    JSON.stringify(portfolio)
-                }
+                <div className="portfolio-detail">
+                    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+                        <main role="main" class="inner page-cover">
+                            <h1 class="cover-heading">Title</h1>
+                            <p class="lead dates">dates</p>
+                            <p class="lead info mb-0">jobTitle | company | location</p>
+                            <p class="lead">description</p>
+                            <p class="lead">
+                                <a href="#" class="btn btn-lg btn-secondary">Visit Company</a>
+                            </p>
+                        </main>
+                    </div>
+                </div>
             </BasePage>
         </BaseLayout>
     )

@@ -7,6 +7,7 @@ import { useDeletePortfolio } from 'actions/portfolios'
 import PortfolioApi from 'lib/api/portfolios'
 import { isAuthorized } from 'utils/auth0';
 
+
 const Portfolios = ({ portfolios: inititalPortfolioData }) => {
     // debugger
     const router = useRouter();

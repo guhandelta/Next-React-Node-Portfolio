@@ -2,10 +2,18 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Container } from 'reactstrap' // Wrapping the component using this, will add left and right padding
 
+
+const PageHeader = ({ header }) =>
+    <div className="page-header">
+        <h1 className="page-header-title">{header}</h1>
+    </div>
+
+
 const BasePage = props => {
     const router = useRouter();
     debugger
     const {
+        noWrapper,
         indexPage,
         className = '',
         header,
@@ -39,14 +47,20 @@ const BasePage = props => {
                 <link rel="icon" type="image/x-icon" href="/images/favicon.ico " />
             </Head>
             <div className={`${pageType} ${className}`}>
-                <Container>
-                    {header &&
-                        <div className="page-header">
-                            <h1 className="page-header-title">{header}</h1>
-                        </div>
-                    }
-                    {children}
-                </Container>
+                {
+                    noWrapper &&
+                    <>
+                        {header && <PageHeader header={header} />}
+                        {children}
+                    </>
+                }
+                {
+                    !noWrapper &&
+                    <Container>
+                        {header && <PageHeader header={header} />}
+                        {children}
+                    </Container>
+                }
             </div>
         </>
     )
