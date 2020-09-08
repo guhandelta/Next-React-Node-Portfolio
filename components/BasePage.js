@@ -11,6 +11,7 @@ const BasePage = props => {
         header,
         children,
         metaDescription = "Hello, I am Guhaprasaanth Nandagopal, an experienced software engineer and freelance developer. I possess experience in working with a variety of web development projects, developing and managing enterprise websites or web applications, as UI developer or as a Fullstack Developer . I constantly work on updating my skillsets by practicing what I learn, with any of my personal or freelance projects, or at work.",
+        canonicalPath, //For cases where the canonical path needs to be specified
         title = "Portfolio - Guhaprasaanth"
     } = props;
     const pageType = indexPage ? 'index-page' : 'base-page';
@@ -30,6 +31,12 @@ const BasePage = props => {
                 <meta name="og:type" key="og:type" content="website" />
                 <meta name="og:description" key="og:description" content={metaDescription} />
                 <meta name="og:image" key="og:image" content={`${process.env.BASE_URL}/images/section-1.png`} />
+                {/* A canonical tag (aka "rel canonical") is a way of telling search engines that a specific URL represents the master copy of a page.
+                 Using the canonical tag prevents problems caused by identical or "duplicate" content appearing on multiple URLs.
+                 Practically speaking, the canonical tag tells search engines which version of a URL you want to appear in search results. */}
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,700&display=swap" />
+                <link rel="canonical" href={`${process.env.BASE_URL}${canonicalPath ? canonicalPath : router.asPath}`}></link>
+                <link rel="icon" type="image/x-icon" href="/images/favicon.ico " />
             </Head>
             <div className={`${pageType} ${className}`}>
                 <Container>
