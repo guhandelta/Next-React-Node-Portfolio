@@ -23,6 +23,7 @@ const BasePage = props => {
         title = "Portfolio - Guhaprasaanth"
     } = props;
     const pageType = indexPage ? 'index-page' : 'base-page';
+    const Wrapper = noWrapper ? React.Fragment : Container;
     return (
         <>
             <Head>
@@ -47,20 +48,10 @@ const BasePage = props => {
                 <link rel="icon" type="image/x-icon" href="/images/favicon.ico " />
             </Head>
             <div className={`${pageType} ${className}`}>
-                {
-                    noWrapper &&
-                    <>
-                        {header && <PageHeader header={header} />}
-                        {children}
-                    </>
-                }
-                {
-                    !noWrapper &&
-                    <Container>
-                        {header && <PageHeader header={header} />}
-                        {children}
-                    </Container>
-                }
+                <Wrapper>
+                    {header && <PageHeader header={header} />}
+                    {children}
+                </Wrapper>
             </div>
         </>
     )
