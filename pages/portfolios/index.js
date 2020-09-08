@@ -30,6 +30,7 @@ const Portfolios = ({ portfolios: inititalPortfolioData }) => {
                 header="Portfolios"
                 className="portfolio-page"
                 title="Portfolio - Guhaprasaanth"
+                metaDescription="My work experience"
             >
                 <Row>
                     {

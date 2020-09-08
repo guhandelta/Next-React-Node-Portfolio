@@ -1,7 +1,10 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Container } from 'reactstrap' // Wrapping the component using this, will add left and right padding
 
 const BasePage = props => {
+    const router = useRouter();
+    debugger
     const {
         indexPage,
         className = '',
@@ -21,6 +24,12 @@ const BasePage = props => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta name="description" key="description" content={metaDescription} />
                 <meta name="title" key="title" content={title} />
+                <meta name="og:title" key="og:title" content={title} />
+                <meta name="og:locale" key="og:locale" content="en_US" />
+                <meta name="og:url" key="og:url" content={`${process.env.BASE_URL}${router.asPath}`} />
+                <meta name="og:type" key="og:type" content="website" />
+                <meta name="og:description" key="og:description" content={metaDescription} />
+                <meta name="og:image" key="og:image" content={`${process.env.BASE_URL}/images/section-1.png`} />
             </Head>
             <div className={`${pageType} ${className}`}>
                 <Container>

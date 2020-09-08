@@ -11,6 +11,7 @@ module.exports = {
     // },
     env: {// This is done to allow using environment variables in browser, as environment variables are only for serverside
         //- it is done by informing Next server, about which variables to expose to the browser
-        AUTH0_NAMESPACE: process.env.AUTH0_NAMESPACE
+        AUTH0_NAMESPACE: process.env.AUTH0_NAMESPACE,
+        BASE_URL: process.env.BASE_URL
     }
 }

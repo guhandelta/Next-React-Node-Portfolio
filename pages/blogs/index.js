@@ -17,6 +17,7 @@ const Blog = ({ blogs }) => {
             <BasePage
                 className="blog-body"
                 title="Blogs - Guhaprasaanth"
+                metaDescription="My personal blogspot"
             >
                 <Row>
                     {
