@@ -6,8 +6,6 @@ import PortfolioApi from 'lib/api/portfolios'
 
 const Portfolio = ({ portfolio }) => {
     const { data: userData, loading: userLoading } = useGetUser();
-    console.log("Ullara");
-    console.log(portfolio.description);
     debugger
     // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
     //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
@@ -23,11 +21,11 @@ const Portfolio = ({ portfolio }) => {
                 <div className="portfolio-detail">
                     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
                         <main role="main" class="inner page-cover">
-                            <h1 class="cover-heading">{portfolio.title}</h1>
-                            <p class="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
-                            <p class="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
-                            <p class="lead">{portfolio.description}</p>
-                            <p class="lead">
+                            <h1 className="cover-heading">{portfolio.title}</h1>
+                            <p className="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
+                            <p className="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
+                            <p className="lead">{portfolio.description}</p>
+                            <p className="lead">
                                 <a href={portfolio.companyWebsite} target="_" class="btn btn-lg btn-secondary">Visit Company</a>
                             </p>
                         </main>
