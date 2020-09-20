@@ -3,7 +3,7 @@ import { BasePage, BaseLayout, Dashead, BlogCard } from 'components'
 import { useGetUser } from 'actions/user'
 import BlogsApi from 'lib/api/blogs'
 
-const Blog = ({ blogs }) => {
+const Blog = ({ blogs = '' }) => {
     const { data, loading } = useGetUser();
     debugger
     return (
