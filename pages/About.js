@@ -35,7 +35,7 @@ const About = () => {
                             <img className="me" src="/images/ec2.png" alt="me" />
                             <table>
                                 <th>
-                                    
+
                                 </th>
                                 <th>
                                     {/* <a href="https://linkedin.com/in/guhaprasaanthnandagopal/"><SiLinkedin /></a> */}
