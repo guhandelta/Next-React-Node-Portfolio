@@ -40,7 +40,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const { data: { blog, author } } = await new BlogsApi().getBySlug(params.slug);
-    return { props: { blog, author } };
+    return {
+        props: {
+            blog,
+            author,
+            unstable_revalidate: 1 // NextJS will attempt to re-generate the page when a request comes in at most, once every 1 second
+        }
+    };
 }
 
 export default BlogDetail;
