@@ -3,6 +3,8 @@ import { Row, Col } from 'reactstrap';
 import { BaseLayout, BasePage } from 'components';
 import { useGetUser } from 'actions/user';
 import { GoMarkGithub } from "react-icons/go";
+import { SiLinkedin } from "react-icons/si";
+
 
 const About = () => {
     const { data, loading } = useGetUser();

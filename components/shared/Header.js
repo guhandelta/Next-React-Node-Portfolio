@@ -79,7 +79,7 @@ const Header = ({ user, loading, className }) => {
                                 <BSNavLink title="Home" href="/" />
                             </NavItem>&emsp;&nbsp;
                         <NavItem className="port-navbar-item">
-                                <BSNavLink title="About" href="/about" />
+                                <BSNavLink title="about" href="/about" />
                             </NavItem>&emsp;&nbsp;
                         <NavItem className="port-navbar-item">
                                 <BSNavLink title="Portfolios" href="/portfolios" />
