@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Row, Col } from 'reactstrap';
 import { BaseLayout, BasePage } from 'components';
 import { useGetUser } from 'actions/user';
-import { GoMarkGithub } from "react-icons/go";
-import { SiLinkedin } from "react-icons/si";
+// import { GoMarkGithub } from "react-icons/go";
+// import { SiLinkedin } from "react-icons/si";
 
 
 const About = () => {
@@ -33,7 +33,7 @@ const About = () => {
                             <h4 className={`subtitle ${createFadeInClass()}`}>To About Page</h4>
                             <p className={`subsubTitle ${createFadeInClass()}`}>Feel free to get to know me.</p>
                         </div>
-                        <div className="left-side">
+                        {/* <div className="left-side">
                             <img className="me" src="/images/ec2.png" alt="me" />
                             <table>
                                 <th>
@@ -43,7 +43,7 @@ const About = () => {
                                     <a href="https://linkedin.com/in/guhaprasaanthnandagopal/"><SiLinkedin /></a>
                                 </th>
                             </table>
-                        </div>
+                        </div> */}
                     </Col>
                     <Col md="6">
                         <br /><br /><br /><br />

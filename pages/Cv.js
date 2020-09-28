@@ -9,7 +9,7 @@ const Cv = () => {
             <BasePage title="CV - Guhaprasaanth">
                 <Row>
                     <Col md={{ size: 8, offset: 2 }}>
-                        <iframe style={{ width: '100%', width: '55em' }} src="/ngp_cv.pdf" frameborder="0"></iframe>
+                        <iframe style={{ width: '100%', width: '55em' }} src="/ngpCv.pdf" frameborder="0"></iframe>
                     </Col>
                 </Row>
             </BasePage>
