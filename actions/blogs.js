@@ -1,5 +1,6 @@
 import axios from 'axios'
-import useSWR from 'swr';
+import useSWR from 'swr'; // Display the previously cached content, while sending a request in paralle to check for any updates and updates-
+//- the view after the response
 import { useApiHandler, fetcher } from 'actions' // @/ is no longer required as NextJS 9.4.x 's absolute path, takes care of it => app folder-
 //- base url -> jsconfig.json
 
