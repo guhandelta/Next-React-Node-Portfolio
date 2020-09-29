@@ -22,7 +22,7 @@ const Index = () => {
     flipInterval.current = setInterval(() => { // To provide the value of a reference, `.current` should be used
       // setIsFlipping(!isFlipping); => This won't work, as isFlipping will be undefined in this case => error
       setIsFlipping((prevFlipping) => !prevFlipping); //Manipulating the state inside a setInterval() can only be done using a callBack fn()
-    }, 2000)
+    }, 2000);
   }
 
   return (
