@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Row, Col } from 'reactstrap';
 import { BaseLayout, BasePage } from 'components';
 import { useGetUser } from 'actions/user';
-// import { GoMarkGithub } from "react-icons/go";
-// import { SiLinkedin } from "react-icons/si";
-
+import { GoMarkGithub } from "react-icons/go";
+import { SiLinkedin } from "react-icons/si";
+import styled from 'styled-components'
 
 const About = () => {
     const { data, loading } = useGetUser();
@@ -33,17 +33,17 @@ const About = () => {
                             <h4 className={`subtitle ${createFadeInClass()}`}>To About Page</h4>
                             <p className={`subsubTitle ${createFadeInClass()}`}>Feel free to get to know me.</p>
                         </div>
-                        {/* <div className="left-side">
-                            <img className="me" src="/images/ec2.png" alt="me" />
-                            <table>
-                                <th>
+                        <div className="left-side">
+                            <img className="me" src="/images/EC2.png" alt="me" />
+                            <SocialIconsHolder>
+                                <SocialIcon>
                                     <a href="https://github.com/guhandelta/"><GoMarkGithub /></a>
-                                </th>
-                                <th>
+                                </SocialIcon>
+                                <SocialIcon>
                                     <a href="https://linkedin.com/in/guhaprasaanthnandagopal/"><SiLinkedin /></a>
-                                </th>
-                            </table>
-                        </div> */}
+                                </SocialIcon>
+                            </SocialIconsHolder>
+                        </div>
                     </Col>
                     <Col md="6">
                         <br /><br /><br /><br />
@@ -64,5 +64,19 @@ const About = () => {
         </BaseLayout>
     )
 }
+
+const SocialIconsHolder = styled.div`
+    width: 17em;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left:4.3em;
+    margin-top:-3em;
+    /* grid-gap: 10px; */
+`
+const SocialIcon = styled.div`
+    transform: scale(2);
+    margin: 4px;
+    padding-left: 20%;
+`
 
 export default About;
