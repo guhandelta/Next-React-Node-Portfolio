@@ -1,3 +1,4 @@
+import {useRouter} from 'next/router'
 import { BaseLayout, BasePage } from 'components'
 import { useGetUser } from 'actions/user'
 import { formatDate } from 'helpers'
@@ -6,6 +7,10 @@ import PortfolioApi from 'lib/api/portfolios'
 
 const Portfolio = ({ portfolio }) => {
     const { data: userData, loading: userLoading } = useGetUser();
+    const router = useRouter();
+    if(router.isFallback){
+        <h1 className="cover-heading">The server is building the page</h1>
+    }
     debugger
     // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
     //- id property is populated || conditional fetching is done here to not to make a fetch request where id param is undefined
@@ -19,15 +24,24 @@ const Portfolio = ({ portfolio }) => {
                 metaDescription={(portfolio.description).substr(1, 75)}
             >
                 <div className="portfolio-detail">
-                    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-                        <main role="main" class="inner page-cover">
-                            <h1 className="cover-heading">{portfolio.title}</h1>
-                            <p className="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
-                            <p className="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
-                            <p className="lead">{portfolio.description}</p>
-                            <p className="lead">
-                                <a href={portfolio.companyWebsite} target="_" class="btn btn-lg btn-secondary">Visit Company</a>
-                            </p>
+                    <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+                        <main role="main" className="inner page-cover">
+                            {
+                                router.isFallback &&
+                                    <h1 className="cover-heading">The server is building the page</h1>
+                            }
+                            {
+                                !router.isFallback &&
+                                <>
+                                    <h1 className="cover-heading">{portfolio.title}</h1>
+                                    <p className="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
+                                    <p className="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
+                                    <p className="lead">{portfolio.description}</p>
+                                    <p className="lead">
+                                        <a href={portfolio.companyWebsite} target="_" className="btn btn-lg btn-secondary">Visit Company</a>
+                                    </p>
+                                </>
+                            }
                         </main>
                     </div>
                 </div>
@@ -56,7 +70,9 @@ export async function getStaticPaths() {
             params: { id: portfolio._id }
         }
     })
-    return { paths, fallback: false }; // fallback: false => display 404, if the page is not found
+    return { paths, fallback: true }; // fallback: false => display 404, if the page is not found
+    //- fallback: true => When req to a page that does not exist is made, this fn() will re-run to-
+    //- fetch the page and return the path of the newely generated page 
 }
 
 // Unlike getServerSideProps(), this function is called during the build time and the portfolio pages are generated as a static pages-
