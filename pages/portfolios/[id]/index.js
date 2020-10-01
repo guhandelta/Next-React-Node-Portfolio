@@ -9,7 +9,7 @@ const Portfolio = ({ portfolio }) => {
     const { data: userData, loading: userLoading } = useGetUser();
     const router = useRouter();
     if(router.isFallback){
-        <h1 className="cover-heading">The server is building the page</h1>
+        return <h1 className="cover-heading">The server is building the page</h1>
     }
     debugger
     // router.query.id will be inititally undefined, which will cause an error, but useSWR will try again and get the page after the-
@@ -19,7 +19,6 @@ const Portfolio = ({ portfolio }) => {
             <BasePage
                 noWrapper
                 indexPage
-
                 title={`${portfolio.title} - Guhaprasaanth`}
                 metaDescription={(portfolio.description).substr(1, 75)}
             >
