@@ -4,7 +4,12 @@
 @import './portfolio-detail';
 @import './dashboard';
 @import './about';
-
+@font-face {
+    font-family: 'Anurati';
+    src: url('/fonts/Anurati-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+  }
 @import './components/header';
 
 html,body{
