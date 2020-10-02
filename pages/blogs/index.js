@@ -2,9 +2,14 @@ import { Row, Col, Container } from 'reactstrap';
 import { BasePage, BaseLayout, Dashead, BlogCard } from 'components'
 import { useGetUser } from 'actions/user'
 import BlogsApi from 'lib/api/blogs'
+import { useRouter } from 'next/router'
 
 const Blog = ({ blogs = '' }) => {
     const { data, loading } = useGetUser();
+    const router = useRouter();
+    if(router.isFallback){
+        return <h1 className="cover-heading">The server is building the page</h1>
+    }
     debugger
     return (
         <BaseLayout

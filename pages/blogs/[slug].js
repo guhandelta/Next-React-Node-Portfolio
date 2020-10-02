@@ -35,7 +35,7 @@ const BlogDetail = ({ blog, author }) => {
 export async function getStaticPaths() {
     const { data } = await new BlogsApi().getAll();
     const paths = data.map(({ blog }) => ({ params: { slug: blog.slug } })); // Object with params : slug
-    return { paths, fallback: true }; //fallback: false => resolve to 404 error
+    return { paths, fallback: false }; //fallback: false => resolve to 404 error
      //- fallback: true => When req to a page that does not exist is made, this fn() will re-run to-
     //- fetch the page and return the path of the newely generated page 
     // This is much useful for /portfolios than /blogs, as the newly created blogs would be under drafts-
