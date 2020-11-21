@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useSWR from 'swr'
 
 export const fetcher = (url) => fetch(url).then(async res => {
     const result = await res.json();
@@ -34,3 +35,6 @@ export function useApiHandler(apiCallHandler) { // Just anonyomizing the API cal
     }
     return [handler, { ...reqState }]
 }
+
+
+export const useGetPictures = () => useSWR('https://picsum.photos/v2/list', fetcher);
