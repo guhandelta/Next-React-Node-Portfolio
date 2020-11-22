@@ -3,6 +3,12 @@
 
 
 module.exports = {
+
+    // Language tag reference - https://gist.github.com/jacobbubu/1836273
+    i18n:{
+        locales: ['en', 'ta'],
+        defaultLocale: 'en'
+    },
     /* Since the images are fetched from an unverified host, it should be mentioned in the configuration-
     - file, that the source is authentic */
     images:{
