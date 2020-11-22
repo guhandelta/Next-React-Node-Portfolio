@@ -48,7 +48,8 @@ export async function getStaticProps({ params }) {
         props: {
             blog,
             author,
-            unstable_revalidate: 1 // NextJS will attempt to re-generate the page when a request comes in at most, once every 1 second
+            revalidate: 1 // NextJS will attempt to re-generate the page when a request comes in at most, once every 1 second
+            // unstable_revalidate: 1 // NextJS will attempt to re-generate the page when a request comes in at most, once every 1 second
         }
     };
 }

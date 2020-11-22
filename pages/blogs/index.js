@@ -49,7 +49,8 @@ export async function getStaticProps() {
     const blogs = data.map(item => ({ ...item.blog, author: item.author }))
     return {
         props: { blogs },
-        unstable_revalidate: 60 //Refetch the data every 60secs
+        revalidate: 60 //Refetch the data every 60secs
+        // unstable_revalidate: 60 //Refetch the data every 60secs
     }
 }
 
