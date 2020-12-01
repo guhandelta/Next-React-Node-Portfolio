@@ -1,6 +1,6 @@
 
+import React from 'react'
 import { Row, Col } from 'reactstrap'
-
 import { BaseLayout, BasePage, PortfolioForm } from '@/components/'
 import withAuth from '@/hoc/withAuth'
 import { useCreatePortfolio } from '@/actions/portfolios'

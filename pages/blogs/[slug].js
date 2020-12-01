@@ -1,3 +1,4 @@
+import React from 'react'
 import { Row, Col } from 'reactstrap'
 import { SlateView } from 'slate-simple-editor'
 import { Avatar, BaseLayout, BasePage } from 'components'

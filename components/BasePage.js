@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Container } from 'reactstrap' // Wrapping the component using this, will add left and right padding
