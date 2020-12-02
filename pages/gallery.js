@@ -1,6 +1,6 @@
 import { Row, Col } from 'reactstrap';
 import { BaseLayout, BasePage } from 'components';
-import { useGetPictures } from '@/actions'
+import { useGetPictures } from 'actions'
 import { useRouter } from 'next/router'
 import Image from 'next/image' // Will convert the images to a web optimized format `webp` and the size-
 //- gets reduced | It also provides Lazy Loading, by loading the images from the server, that are not in-
