@@ -17,6 +17,6 @@ const PortfolioCard = ({ portfolio, children }) =>
             {children}
         </CardBody>
     </Card>
-
+ 
 
 export default PortfolioCard

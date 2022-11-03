@@ -9,10 +9,11 @@ const Cv = () => {
             <BasePage title="CV - Guhaprasaanth">
                 <Row>
                     <Col md={{ size: 8, offset: 2 }}>
-                        <iframe style={{ width: '100%', height: '55em' }} src="/ngpCv.pdf" frameborder="0"></iframe>
+                        <iframe style={{ width: '100%', height: '55em' }} src="https://drive.google.com/file/d/1Df1hVb7piSh5REjaVmddQcKfRcuLs8Im/preview" frameborder="0"></iframe>
+                       {/* <object data="https://drive.google.com/file/d/1Df1hVb7piSh5REjaVmddQcKfRcuLs8Im/view" type="application/pdf"></object> */}
                     </Col>
                 </Row>
-            </BasePage>
+            </BasePage> 
         </BaseLayout>
     )
 }

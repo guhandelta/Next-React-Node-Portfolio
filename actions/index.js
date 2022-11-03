@@ -37,4 +37,5 @@ export function useApiHandler(apiCallHandler) { // Just anonyomizing the API cal
 }
 
 
-export const useGetPictures = () => useSWR('https://picsum.photos/v2/list', fetcher);
+export const useGetPictures = () => useSWR('https://drive.google.com/drive/folders/1-ulmIppwBODCGlkDNg4lun6Tn9zeK_tV?usp=sharing', fetcher);
+// export const useGetPictures = () => useSWR('https://picsum.photos/v2/list', fetcher);

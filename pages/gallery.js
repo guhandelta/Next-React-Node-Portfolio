@@ -2,6 +2,7 @@ import { Row, Col } from 'reactstrap';
 import { BaseLayout, BasePage } from 'components';
 import { useGetPictures } from 'actions'
 import { useRouter } from 'next/router'
+import { gapi } from 'gapi-script'
 import Image from 'next/image' // Will convert the images to a web optimized format `webp` and the size-
 //- gets reduced | It also provides Lazy Loading, by loading the images from the server, that are not in-
 //- the browser's view port, only when the user scrolls over to those images. This optimizes images-
