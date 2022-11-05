@@ -32,7 +32,7 @@
     "react-typed": "^1.2.0",
     "reactstrap": "^8.5.1",
     "sass": "^1.26.8",
-    "slate-simple-editor": "git+https://github.com/Jerga99/slate-simple-editor.git",
+    "slate-simple-editor": "git+https://github.com/jerga99/slate-simple-editor.git",
     "slugify": "^1.4.5",
     "styled-components": "^5.2.0",
     "swr": "^0.2.3"
